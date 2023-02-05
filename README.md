@@ -40,31 +40,19 @@ To be written.
 2. Save the clustering results as a rosbag.
 
 ## Installation Process
-```
-cd ~/catkin_ws/src
-git clone https://github.com/Wang-Theo/perception_lidar_clustering.git
 cd ~/catkin_ws/
-catkin_makePerception
+catkin_make 
 source devel/setup.bash
-```
 
 ## Execution for python file (subscriber: receive point cloud data from rosbag)
-```
 cd ~/catkin_ws/src/perception_lidar_clustering/scripts/
 chmod +x lidar_clustering.py 
-```
 
 ** Terminal 1 **
-```
 roscore
-```
 
 ** Terminal 2 **
-```
 rosrun perception_lidar_clustering lidar_clustering.py
-```
 
 ** Terminal 3 **
-```
 rosbag play me5413_lidar.bag
-```
