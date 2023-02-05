@@ -1,5 +1,4 @@
-# ME5413 HW1
-# perception_lidar_clustering
+# ME5413 HW1 perception_lidar_clustering
 This is the Homework_1: Perception of ME5413: Autonomous Mobile Robot. 
 
 Group member: Chen Yihui, Wang Renjie
@@ -15,9 +14,9 @@ i.  Code:       task1_lidar_cls.ipynb
 
 Before run the code, remember to put the lidar_data file in this folder (Task 1). 
 
-If you use VScode, remember to uncomment the followings in the code and change the path:
-# import sys
-# sys.path.append('/home/cyh/anaconda3/lib/python3.8/site-packages')
+If you use VScode, remember to uncomment the followings codes and change the path:
+import sys
+sys.path.append('/home/cyh/anaconda3/lib/python3.8/site-packages')
 
 After running the code, the clustering results will be written to lidar_clustering.json.
 
@@ -31,6 +30,9 @@ For each frame in lidar_data file, number of ground points and surrounding point
 
 ## Task 2: Image Segmentation
 
+i.  Code:       MATLAB files 
+ii. Results:    Image files 
+
 To be written.
 
 
@@ -39,19 +41,19 @@ To be written.
 1. Perform Lidar Clustering in ROS by subscribing to the topic - /me5413/lidar_top 
 2. Save the clustering results as a rosbag.
 
-# Installation Process
+### Installation Process
 cd ~/catkin_ws/
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 
-# Execution for python file (subscriber: receive point cloud data from rosbag)
+### Execution for python file (subscriber: receive point cloud data from rosbag)
 cd ~/catkin_ws/src/perception_lidar_clustering/scripts/
 chmod +x lidar_clustering.py 
 
-# Do clustering and record the results as rosbag 
+### Do clustering and record the results as rosbag 
 To be written
 
-# Visualize the initial lidar data
+### Visualize the initial lidar data
 ** Terminal 1 **
 roscore
 
@@ -64,3 +66,4 @@ roscore
 
 ** Terminal 2 **
 roslaunch perception_lidar_clustering RosbagRecord_ClusteredData.launch
+
