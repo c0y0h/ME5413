@@ -39,20 +39,28 @@ To be written.
 1. Perform Lidar Clustering in ROS by subscribing to the topic - /me5413/lidar_top 
 2. Save the clustering results as a rosbag.
 
-## Installation Process
+# Installation Process
 cd ~/catkin_ws/
-catkin_make 
+catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 
-## Execution for python file (subscriber: receive point cloud data from rosbag)
+# Execution for python file (subscriber: receive point cloud data from rosbag)
 cd ~/catkin_ws/src/perception_lidar_clustering/scripts/
 chmod +x lidar_clustering.py 
 
+# Do clustering and record the results as rosbag 
+To be written
+
+# Visualize the initial lidar data
 ** Terminal 1 **
 roscore
 
 ** Terminal 2 **
-rosrun perception_lidar_clustering lidar_clustering.py
+roslaunch perception_lidar_clustering RosbagPlay_InitialData.launch
 
-** Terminal 3 **
-rosbag play me5413_lidar.bag
+# Visualize the clustering results
+** Terminal 1 **
+roscore
+
+** Terminal 2 **
+roslaunch perception_lidar_clustering RosbagRecord_ClusteredData.launch
