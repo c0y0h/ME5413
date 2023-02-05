@@ -1,0 +1,62 @@
+{
+ "Lidar clustering results of frame1": {
+  "Number of ground points": 16390,
+  "Number of surrounding points": 18330,
+  "Estimated number of clusters": 230,
+  "Estimated number of noise points": 5340
+ },
+ "Lidar clustering results of frame2": {
+  "Number of ground points": 15830,
+  "Number of surrounding points": 18890,
+  "Estimated number of clusters": 185,
+  "Estimated number of noise points": 4845
+ },
+ "Lidar clustering results of frame3": {
+  "Number of ground points": 5252,
+  "Number of surrounding points": 29436,
+  "Estimated number of clusters": 219,
+  "Estimated number of noise points": 5292
+ },
+ "Lidar clustering results of frame4": {
+  "Number of ground points": 10555,
+  "Number of surrounding points": 24197,
+  "Estimated number of clusters": 150,
+  "Estimated number of noise points": 5378
+ },
+ "Lidar clustering results of frame5": {
+  "Number of ground points": 15060,
+  "Number of surrounding points": 19724,
+  "Estimated number of clusters": 115,
+  "Estimated number of noise points": 4795
+ },
+ "Lidar clustering results of frame6": {
+  "Number of ground points": 15283,
+  "Number of surrounding points": 19437,
+  "Estimated number of clusters": 203,
+  "Estimated number of noise points": 4576
+ },
+ "Lidar clustering results of frame7": {
+  "Number of ground points": 15693,
+  "Number of surrounding points": 19027,
+  "Estimated number of clusters": 191,
+  "Estimated number of noise points": 5034
+ },
+ "Lidar clustering results of frame8": {
+  "Number of ground points": 16850,
+  "Number of surrounding points": 17838,
+  "Estimated number of clusters": 179,
+  "Estimated number of noise points": 5238
+ },
+ "Lidar clustering results of frame9": {
+  "Number of ground points": 16611,
+  "Number of surrounding points": 18077,
+  "Estimated number of clusters": 168,
+  "Estimated number of noise points": 5341
+ },
+ "Lidar clustering results of frame10": {
+  "Number of ground points": 15839,
+  "Number of surrounding points": 18849,
+  "Estimated number of clusters": 195,
+  "Estimated number of noise points": 5216
+ }
+}
