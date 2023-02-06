@@ -33,9 +33,12 @@ For each frame in lidar_data file, number of ground points and surrounding point
 i.  Code:       MATLAB files 
 ii. Results:    Image files 
 
-To be written.
-
-
+### Execution process
+1. Download retrained model and put it in the Code file**
+[DeepLabv3plusResnet18CamVid](https://ssd.mathworks.com/supportfiles/vision/data/deeplabv3plusResnet18CamVid.zip)
+2. Open Task2 file with MATLAB
+3. Enter Code file and run "Execution_2A.m" (Question 2A) and will find result images in Results file
+3. Enter Code file and run "Execution_2B.m" (Question 2B) and will find result images in Results file
 
 ## Bonus Task: Implementation in ROS
 1. Perform Lidar Clustering in ROS by subscribing to the topic - /me5413/lidar_top 
