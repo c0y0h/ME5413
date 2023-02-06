@@ -42,9 +42,11 @@ To be written.
 2. Save the clustering results as a rosbag.
 
 ### Installation Process
+```
 cd ~/catkin_ws/
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
+```
 
 ### Execution for python file (subscriber: receive point cloud data from rosbag)
 ```
@@ -57,15 +59,22 @@ To be written
 
 ### Visualize the initial lidar data
 ** Terminal 1 **
+```
 roscore
+```
 
 ** Terminal 2 **
+```
 roslaunch perception_lidar_clustering RosbagPlay_InitialData.launch
+```
 
 # Visualize the clustering results
 ** Terminal 1 **
+```
 roscore
+```
 
 ** Terminal 2 **
+```
 roslaunch perception_lidar_clustering RosbagRecord_ClusteredData.launch
-
+```
