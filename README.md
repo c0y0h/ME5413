@@ -33,37 +33,53 @@ For each frame in lidar_data file, number of ground points and surrounding point
 i.  Code:       MATLAB files 
 ii. Results:    Image files 
 
-To be written.
+### Execution process
+1. Download retrained model and put it in the Code file
 
+[DeepLabv3plusResnet18CamVid](https://ssd.mathworks.com/supportfiles/vision/data/deeplabv3plusResnet18CamVid.zip)
 
+2. Open "Task2" file with MATLAB
+3. Enter "Code" file and run "Execution_2A.m" (do not foget to change the image path to your absolute path) and will find result images in "Results/result_2A/" file
+3. Enter "Code" file and run "Execution_2B.m" (do not foget to change the image path to your absolute path) and will find result images in "Results/result_2B/" file
 
 ## Bonus Task: Implementation in ROS
 1. Perform Lidar Clustering in ROS by subscribing to the topic - /me5413/lidar_top 
 2. Save the clustering results as a rosbag.
 
 ### Installation Process
+```
 cd ~/catkin_ws/
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
+```
 
 ### Execution for python file (subscriber: receive point cloud data from rosbag)
+```
 cd ~/catkin_ws/src/perception_lidar_clustering/scripts/
-chmod +x lidar_clustering.py 
+chmod +x lidar_clustering.py
+```
 
 ### Do clustering and record the results as rosbag 
 To be written
 
 ### Visualize the initial lidar data
 ** Terminal 1 **
+```
 roscore
+```
 
 ** Terminal 2 **
+```
 roslaunch perception_lidar_clustering RosbagPlay_InitialData.launch
+```
 
 ### Visualize the clustering results
 ** Terminal 1 **
+```
 roscore
+```
 
 ** Terminal 2 **
+```
 roslaunch perception_lidar_clustering RosbagRecord_ClusteredData.launch
-
+```
