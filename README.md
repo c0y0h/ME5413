@@ -47,8 +47,10 @@ catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 
 ### Execution for python file (subscriber: receive point cloud data from rosbag)
+```
 cd ~/catkin_ws/src/perception_lidar_clustering/scripts/
-chmod +x lidar_clustering.py 
+chmod +x lidar_clustering.py
+```
 
 ### Do clustering and record the results as rosbag 
 To be written
