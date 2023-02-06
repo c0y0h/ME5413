@@ -99,7 +99,7 @@
 
 %MS++++++++++++++++++++++++++++++ Title +++++++++++++++++++
 \title{ME5413 Autonomous Mobile Robotics: \\ Homework 1}
-\author{\textup{Yihui Chen \ \ \ A0263115N \\ Renjie Wang }}
+\author{\textup{Yihui Chen \ \ \ A0263115N \\ Renjie Wang \ A0263387U }}
 \begin{document}
 	\begin{titlepage}
 		\center
@@ -127,7 +127,7 @@
 		\end{minipage}\\[3cm]
 		\makeatother
 		%{\large \emph{Matriculation Number: A0263115N}}\\[0.5cm]
-		{\large \emph{Email Address: e1010473@u.nus.edu}}\\[0.5cm]
+		{\large \emph{Email Address: e1010473@u.nus.edu \\	\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e1010745@u.nus.edu}}\\[0.5cm]
 		{\large \today}\\[2cm] 
 		\vfill 
 	\end{titlepage}
@@ -198,7 +198,49 @@ where $P$ is the probability that we hope RANSAC algorithm to get the correct mo
 \subsection{DBSCAN Algorithm}
 
 \hspace{1.0em}
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise) algorithm clusters the objects based on density. It defines a cluster as the maximal set of density-reachable points and is able to detect clusters of any shape. DBSCAN has only two parameters $eps$ and $min\_samples$, which defines the core samples that are in areas of high density. As shown in Fig.~\ref{fig2}, the red points are core samples since there are more than $min\_samples$ (5) points around them in $eps$ distance. Those density-reachable core samples and non-core samples (black ones) around them forms a cluster. Therefore, there are 2 clusters in Fig.~\ref{fig2}, and those black points outside circles are detected as noise points.
 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{fig2.png}
+	\caption{DBSCAN clustering principle}
+	\label{fig2}
+\end{figure} 
+
+We paint the segmented ground point cloud blue and don't use them for clustering. We label different clusters in the scene with different colors, and mark noise points white. Since there may be large number of clusters, the colors of different clusters can be close, we plot bounding boxes for each cluster and store their information in the json file. We test the DBSCAN algorithm with different $eps$ and $min\_samples$, the results are shown in Fig.~\ref{fig3}.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=5cm]{fig3a.png}
+		\subcaption{$eps=0.5$, $min\_samples=5$ \\ \centering $n\_cluster=152$, $n\_noise=3105$}
+		\label{fig3a}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=5cm]{fig3b.png}
+		\subcaption{$eps=0.25$, $min\_samples=5$ \\ \centering $n\_cluster=235$, $n\_noise=6186$}
+		\label{fig3b}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=5cm]{fig3c.png}
+		\subcaption{$eps=0.5$, $min\_samples=10$ \\ \centering $n\_cluster=39$, $n\_noise=5050$}
+		\label{fig3c}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=5cm]{fig3d.png}
+		\subcaption{$eps=0.5$, $min\_samples=20$ \\ \centering $n\_cluster=25$, $n\_noise=7519$}
+		\label{fig3d}
+	\end{minipage}
+	\caption{Clustering results by DBSCAN algorithm for frame1}
+	\label{fig3}
+\end{figure} 
+
+It is easy to see that larger $min\_samples$ or smaller $eps$ stands for higher density to form a cluster. In Fig.~\ref{fig3b}, the density requirement is too high and causes bad clustering performance and large number of noise points. Also compare Fig.~\ref{fig3c} and Fig.~\ref{fig3d}, where we remain $eps$ the same and increase the $min\_samples$ requirements, we can find the clustering accuracy increases but it loses more information and generates more noise points. We finally choose the case Fig.~\ref{fig3c} as results written to the json file.
 	
 	
 \end{document}
