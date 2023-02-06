@@ -39,8 +39,8 @@ ii. Results:    Image files
 [DeepLabv3plusResnet18CamVid](https://ssd.mathworks.com/supportfiles/vision/data/deeplabv3plusResnet18CamVid.zip)
 
 2. Open "Task2" file with MATLAB
-3. Enter "Code" file and run "Execution_2A.m" (Question 2A) and will find result images in "Results" file
-3. Enter "Code" file and run "Execution_2B.m" (Question 2B) and will find result images in "Results" file
+3. Enter "Code" file and run "Execution_2A.m" (do not foget to change the image path to your absolute path) and will find result images in "Results/result_2A/" file
+3. Enter "Code" file and run "Execution_2B.m" (do not foget to change the image path to your absolute path) and will find result images in "Results/result_2B/" file
 
 ## Bonus Task: Implementation in ROS
 1. Perform Lidar Clustering in ROS by subscribing to the topic - /me5413/lidar_top 
