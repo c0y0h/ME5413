@@ -60,7 +60,7 @@ roscore
 ** Terminal 2 **
 roslaunch perception_lidar_clustering RosbagPlay_InitialData.launch
 
-# Visualize the clustering results
+### Visualize the clustering results
 ** Terminal 1 **
 roscore
 
