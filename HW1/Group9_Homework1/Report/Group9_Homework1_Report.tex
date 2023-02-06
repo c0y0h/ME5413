@@ -18,6 +18,10 @@
 \usepackage{booktabs} %% tables with three lines
 \usepackage{tocloft}
 \usepackage{graphicx}
+
+\usepackage{algorithm}  
+%\usepackage{algorithmicx}  
+\usepackage{algorithmic}
 %+++++++++++++++ Proof etc. +++++++++++++++++++++++++%%
 {%% Environment of Proof
 	\theoremstyle{nonumberplain}
@@ -128,8 +132,72 @@
 		\vfill 
 	\end{titlepage}
 
-\section{Task 1}
-	
+\section{Task 1: Lidar Clustering}
+
+\hspace{1.0em}
+
+In task 1, we need to perform lidar clustering for all objects in the scene given the set of 10 point cloud lidar samples. Different methods are tried and compared including DBSCAN algorithm that introduced in class. The clustering results are saved as the form of dictionary in a json file.
+
+\subsection{Ground Point Cloud Segmentation}
+
+\hspace{1.0em}
+Before doing lidar clustering, ground point cloud should first be segmented from the scene to avoid producing error in the following process. Since the ground point clouds are almost on the same plane, we selfly write a simple RANdom SAmple Consensus (RANSAC) model to detect and filter it. 
+
+According to RANSAC algorithm (Alg.~\ref{alg:algorithm1}), we can regard the groud points as inliers while the surrounding points as outliers. The plane model can be explained as $aX+bY+cZ+d=0$, which has 4 parameters and only need 3 points to solve it. In Step3, we assume the data point to be inliers if its distance to the model plane is less than $\sigma$ ($\sigma=0.4$ in our results). To accelerate the iteration, we also change the maximum iteration number when updating the model parameters according to Eq.~\ref{eq1}:
+
+\begin{algorithm}
+	\caption{RANSAC Algorithm}
+	\begin{algorithmic}  
+		\WHILE {$iter < iter_{max}$}
+		
+			\STATE Step1: Randomly choose the smallest datset to estimate the model;
+			
+			\STATE Step2: Solve the model by the chosen dataset;
+			
+			\STATE Step3: Use all the other data to count the number of inliers;
+			
+			\STATE Step4: Compare the number of inliers of the current model and the best model, update the model;
+			
+			\IF{the model is good enough} 
+				\STATE break;
+			\ENDIF 
+		
+		\ENDWHILE
+		
+	\end{algorithmic}
+ \label{alg:algorithm1} 
+\end{algorithm}
+
+\begin{equation}
+\begin{aligned}
+	iter = \frac{log(1-P)}{log(1-t^{n})}
+	\label{eq1}
+\end{aligned}
+\end{equation}
+
+where $P$ is the probability that we hope RANSAC algorithm to get the correct model (0.99 in our case), $t$ is the ratio of inliers in the whole dataset, and $n$ is the number of points. We consider the model is good enough if the ratio of inliers is more than 0.4. Take the frame1 as example, Fig.~\ref{fig1} visualize the cloud points before and after ground segmentaion. The performance is quite good in this case, but it may sometimes show some error because of the randomness of the algorithm.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=6cm]{fig1a.png}
+		\subcaption{Initial pointcloud}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=6cm]{fig1b.png}
+		\subcaption{Segmented ground pointcloud}
+	\end{minipage}
+	\caption{Cloud points before and after ground segmentaion in frame1}
+	\label{fig1}
+\end{figure} 
+
+
+
+\subsection{DBSCAN Algorithm}
+
+\hspace{1.0em}
 
 	
 	

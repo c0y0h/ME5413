@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  6 FEB 2023 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  6 FEB 2023 16:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -446,40 +446,55 @@ Package tocloft Info: The document has section divisions on input line 51.
 \cfttabindent=\skip97
 \cfttabnumwidth=\skip98
 )
-\c@currproofctr=\count283
-\c@endproofctr=\count284
-\c@proof=\count285
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+\@float@every@algorithm=\toks42
+\c@algorithm=\count283
+)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count284
+\c@ALC@line=\count285
+\c@ALC@rem=\count286
+\c@ALC@depth=\count287
+\ALC@tlm=\skip99
+\algorithmicindent=\skip100
+)
+\c@currproofctr=\count288
+\c@endproofctr=\count289
+\c@proof=\count290
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty)
-\c@currtheoremctr=\count286
-\c@endtheoremctr=\count287
-\c@theorem=\count288
-\c@currlemmactr=\count289
-\c@endlemmactr=\count290
-\c@lemma=\count291
-\c@currdefinitionctr=\count292
-\c@enddefinitionctr=\count293
-\c@definition=\count294
-\c@currassumptionctr=\count295
-\c@endassumptionctr=\count296
-\c@assumption=\count297
-\c@currexamplectr=\count298
-\c@endexamplectr=\count299
-\c@example=\count300
-\c@currcorollaryctr=\count301
-\c@endcorollaryctr=\count302
-\c@corollary=\count303
-\c@currremarkctr=\count304
-\c@endremarkctr=\count305
-\c@remark=\count306
+\c@currtheoremctr=\count291
+\c@endtheoremctr=\count292
+\c@theorem=\count293
+\c@currlemmactr=\count294
+\c@endlemmactr=\count295
+\c@lemma=\count296
+\c@currdefinitionctr=\count297
+\c@enddefinitionctr=\count298
+\c@definition=\count299
+\c@currassumptionctr=\count300
+\c@endassumptionctr=\count301
+\c@assumption=\count302
+\c@currexamplectr=\count303
+\c@endexamplectr=\count304
+\c@example=\count305
+\c@currcorollaryctr=\count306
+\c@endcorollaryctr=\count307
+\c@corollary=\count308
+\c@currremarkctr=\count309
+\c@endremarkctr=\count310
+\c@remark=\count311
 
 (/usr/share/texlive/texmf-dist/tex/latex/abstract/abstract.sty
 Package: abstract 2009/06/08 v1.2a configurable abstracts
-\abstitleskip=\skip99
-\absleftindent=\skip100
-\absrightindent=\skip101
-\absparindent=\skip102
-\absparsep=\skip103
+\abstitleskip=\skip101
+\absleftindent=\skip102
+\absrightindent=\skip103
+\absparindent=\skip104
+\absparsep=\skip105
 )
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
@@ -487,9 +502,9 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count307
-\Gm@cntv=\count308
-\c@Gm@tempcnt=\count309
+\Gm@cnth=\count312
+\Gm@cntv=\count313
+\c@Gm@tempcnt=\count314
 \Gm@bindingoffset=\dimen186
 \Gm@wd@mp=\dimen187
 \Gm@odd@mp=\dimen188
@@ -498,32 +513,32 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen191
 \Gm@layouthoffset=\dimen192
 \Gm@layoutvoffset=\dimen193
-\Gm@dimlist=\toks42
+\Gm@dimlist=\toks43
 )
 (/usr/share/texlive/texmf-dist/tex/latex/appendix/appendix.sty
 Package: appendix 2020/02/08 v1.2c extra appendix facilities
-\c@@pps=\count310
-\c@@ppsavesec=\count311
-\c@@ppsaveapp=\count312
+\c@@pps=\count315
+\c@@ppsavesec=\count316
+\c@@ppsaveapp=\count317
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count313
+\lst@mode=\count318
 \lst@gtempboxa=\box49
-\lst@token=\toks43
-\lst@length=\count314
+\lst@token=\toks44
+\lst@length=\count319
 \lst@currlwidth=\dimen194
-\lst@column=\count315
-\lst@pos=\count316
+\lst@column=\count320
+\lst@pos=\count321
 \lst@lostspace=\dimen195
 \lst@width=\dimen196
-\lst@newlines=\count317
-\lst@lineno=\count318
+\lst@newlines=\count322
+\lst@lineno=\count323
 \lst@maxwidth=\dimen197
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
-\c@lstnumber=\count319
-\lst@skipnumbers=\count320
+\c@lstnumber=\count324
+\lst@skipnumbers=\count325
 \lst@framebox=\box50
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -544,42 +559,42 @@ File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count321
+\l__kernel_color_stack_int=\count326
 \l__pdf_internal_box=\box51
 )
 (./Group9_Homework1_Report.aux)
 \openout1 = `Group9_Homework1_Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count322
+\scratchcounter=\count327
 \scratchdimen=\dimen198
 \scratchbox=\box52
-\nofMPsegments=\count323
-\nofMParguments=\count324
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count325
+\nofMPsegments=\count328
+\nofMParguments=\count329
+\everyMPshowfont=\toks45
+\MPscratchCnt=\count330
 \MPscratchDim=\dimen199
-\MPnumerator=\count326
-\makeMPintoPDFobject=\count327
-\everyMPtoPDFconversion=\toks45
+\MPnumerator=\count331
+\makeMPintoPDFobject=\count332
+\everyMPtoPDFconversion=\toks46
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -590,7 +605,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box53
-Package hyperref Info: Link coloring ON on input line 99.
+Package hyperref Info: Link coloring ON on input line 103.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -601,11 +616,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count328
+\c@section@level=\count333
 )
-LaTeX Info: Redefining \ref on input line 99.
-LaTeX Info: Redefining \pageref on input line 99.
-LaTeX Info: Redefining \nameref on input line 99.
+LaTeX Info: Redefining \ref on input line 103.
+LaTeX Info: Redefining \pageref on input line 103.
+LaTeX Info: Redefining \nameref on input line 103.
 
 (./Group9_Homework1_Report.out) (./Group9_Homework1_Report.out)
 \@outlinefile=\write3
@@ -649,74 +664,86 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count329
-<logo.png, id=4, 301.125pt x 137.51375pt>
+\c@lstlisting=\count334
+<logo.png, id=16, 301.125pt x 137.51375pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 103.
+Package pdftex.def Info: logo.png  used on input line 107.
 (pdftex.def)             Requested size: 227.62204pt x 103.95128pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 116
+LaTeX Font Info:    Trying to load font information for U+msa on input line 120
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 116
+LaTeX Font Info:    Trying to load font information for U+msb on input line 120
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 11
-6.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 12
+0.
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo.png>]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 149.
+<fig1a.png, id=31, 1375.1375pt x 878.28125pt>
+File: fig1a.png Graphic file (type png)
+<use fig1a.png>
+Package pdftex.def Info: fig1a.png  used on input line 184.
+(pdftex.def)             Requested size: 170.71652pt x 109.0344pt.
+<fig1b.png, id=32, 1375.1375pt x 878.28125pt>
+File: fig1b.png Graphic file (type png)
+<use fig1b.png>
+Package pdftex.def Info: fig1b.png  used on input line 189.
+(pdftex.def)             Requested size: 170.71652pt x 109.0344pt.
 \tf@thm=\write4
 \openout4 = `Group9_Homework1_Report.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 136.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 204.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.136 \end{document}
-                     [1]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 136.
- (./Group9_Homework1_Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 136.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 136.
+l.204 \end{document}
+                     [1 <./fig1a.png> <./fig1b.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 204.
 
-
-Package rerunfilecheck Warning: File `Group9_Homework1_Report.out' has changed.
-
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Group9_Homework1_Report.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  30EF93738F5DA2F1E65A8D0071D72C45;41.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 136.
+(./Group9_Homework1_Report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 204.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 204.
+Package rerunfilecheck Info: File `Group9_Homework1_Report.out' has not changed
+.
+(rerunfilecheck)             Checksum: 5DBECF3B4328540794EEF23612A4FAED;204.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 204.
  ) 
 Here is how much of TeX's memory you used:
- 11377 strings out of 481239
- 171400 string characters out of 5920376
- 632985 words of memory out of 5000000
- 26434 multiletter control sequences out of 15000+600000
- 540202 words of font info for 53 fonts, out of 8000000 for 9000
+ 11612 strings out of 481239
+ 174396 string characters out of 5920376
+ 640480 words of memory out of 5000000
+ 26645 multiletter control sequences out of 15000+600000
+ 540808 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,5n,42p,262b,389s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Group9_Homework1_Report.pdf (2 pages, 77702 bytes).
+ 41i,8n,42p,575b,663s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i12.pfb>
+Output written on Group9_Homework1_Report.pdf (2 pages, 244673 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
- 3 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 98 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
+ 17 named destinations out of 1000 (max. 500000)
+ 40 words of extra memory for PDF output out of 10000 (max. 10000000)
 
