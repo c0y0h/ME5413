@@ -15,15 +15,6 @@ cmap = [
     0 128 192     % Bicycles_Motorcycles
     ];
 
-
-% cmap = [
-%     64 0 128      % Vehicles
-%     0 128 192     % Bicycles_Motorcycles
-%     64 64 0       % Pedestrian
-%     128 128 128   % Others
-%     128 64 128    % Drivable_Surface
-%     ];
-
 % Normalize between [0 1].
 cmap = cmap ./ 255;
 end
