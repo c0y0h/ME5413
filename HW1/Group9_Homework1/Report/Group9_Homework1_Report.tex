@@ -1,4 +1,4 @@
-\documentclass[8pt]{article}
+\documentclass[10pt]{article}
 %MS%%%%%%%%%%%%%%%%%%%% Article Format %%%%%%%%%%%%%%%%%
 %+++++++++++++++++++++ Usepackage +++++++++++++++%%
 \usepackage{graphicx} %% Package for Figure
@@ -50,7 +50,7 @@
 \graphicspath{{figure/}}                                 %% Path of Figures
 \usepackage[a4paper]{geometry}                           %% Paper size
 \geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm} %% Margin
-\linespread{1.1}      
+\linespread{1.2}      
 
 % matlab code package
 \usepackage{appendix}
@@ -88,7 +88,7 @@
 	%    if,otherwise,persistent,return,switch,try,while,...},%
 }
 
- \setlength{\parskip}{0.1em}
+ \setlength{\parskip}{0.5em}
 
                                    %% Line Spread
 %MS%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Format %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -183,12 +183,12 @@ where $P$ is the probability that we hope RANSAC algorithm to get the correct mo
 	\centering
 	\begin{minipage}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=4cm]{fig1a.png}
+		\includegraphics[width=5cm]{fig1a.png}
 		\subcaption{Initial pointcloud}
 	\end{minipage}
 	\begin{minipage}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=4cm]{fig1b.png}
+		\includegraphics[width=5cm]{fig1b.png}
 		\subcaption{Segmented ground pointcloud}
 	\end{minipage}
 	\caption{Cloud points before and after ground segmentaion in frame1}
@@ -205,7 +205,7 @@ DBSCAN (Density-Based Spatial Clustering of Applications with Noise) algorithm c
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=3.5cm]{fig2.png}
+	\includegraphics[width=4cm]{fig2.png}
 	\caption{DBSCAN clustering principle}
 	\label{fig2}
 \end{figure} 
@@ -316,15 +316,15 @@ In this question, we directly perform image segmentation using DeepLabv3+ pretra
 
 \begin{figure}[H]
 	\centering
-	\begin{minipage}[t]{0.48\textwidth}
+	\begin{minipage}[t]{1\textwidth}
 		\centering
-		\includegraphics[width=7.5cm]{211.png}
+		\includegraphics[width=15cm]{211.png}
 		\subcaption{Original sample images}
 		\label{fig5a}
 	\end{minipage}
-	\begin{minipage}[t]{0.48\textwidth}
+	\begin{minipage}[t]{1\textwidth}
 		\centering
-		\includegraphics[width=7.5cm]{2.1_2.png}
+		\includegraphics[width=15cm]{2.1_2.png}
 		\subcaption{Segmented Images}
 		\label{fig5b}
 	\end{minipage}
@@ -350,27 +350,27 @@ The failure points can be concluded as follows:
 
 \begin{figure}[H]
 	\centering
-	\begin{minipage}[t]{0.23\textwidth}
+	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.3cm]{fig6a.jpg}
+		\includegraphics[width=3.5cm]{fig6a.jpg}
 		\subcaption{}
 		\label{fig6a}
 	\end{minipage}
-	\begin{minipage}[t]{0.23\textwidth}
+	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.3cm]{fig6b.jpg}
+		\includegraphics[width=3.5cm]{fig6b.jpg}
 		\subcaption{}
 		\label{fig6b}
 	\end{minipage}
-	\begin{minipage}[t]{0.23\textwidth}
+	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.3cm]{fig6c.jpg}
+		\includegraphics[width=3.5cm]{fig6c.jpg}
 		\subcaption{}
 		\label{fig6c}
 	\end{minipage}
-	\begin{minipage}[t]{0.23\textwidth}
+	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.3cm]{fig6d.jpg}
+		\includegraphics[width=3.5cm]{fig6d.jpg}
 		\subcaption{}
 		\label{fig6d}
 	\end{minipage}
@@ -390,25 +390,25 @@ Here is the method of segmentation using the Deeplabv3 pre-trained neural networ
 	\centering
 	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.3cm]{fig7a.jpg}
+		\includegraphics[width=3.5cm]{fig7a.jpg}
 		\subcaption{Original segmented image1}
 		\label{fig7a}
 	\end{minipage}
 	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.3cm]{fig7b.jpg}
+		\includegraphics[width=3.5cm]{fig7b.jpg}
 		\subcaption{Processed segmented image1}
 		\label{fig7b}
 	\end{minipage}
 	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.3cm]{fig7c.jpg}
+		\includegraphics[width=3.5cm]{fig7c.jpg}
 		\subcaption{Original segmented image2}
 		\label{fig7c}
 	\end{minipage}
 	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.3cm]{fig7d.jpg}
+		\includegraphics[width=3.5cm]{fig7d.jpg}
 		\subcaption{Processed segmented image2}
 		\label{fig7d}
 	\end{minipage}
@@ -418,6 +418,9 @@ Here is the method of segmentation using the Deeplabv3 pre-trained neural networ
 
 
 
+\section{Bonus Task: Implementation in ROS}
+
+\hspace{1.0em}
 
 
 

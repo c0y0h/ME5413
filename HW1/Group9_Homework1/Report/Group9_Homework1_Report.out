@@ -6,3 +6,4 @@
 \BOOKMARK [2][-]{subsection.2.1}{Deeplabv3 Retrained Model}{section.2}% 6
 \BOOKMARK [2][-]{subsection.2.2}{Analysis on the segmentation performance}{section.2}% 7
 \BOOKMARK [2][-]{subsection.2.3}{Improvement to the segmentation method}{section.2}% 8
+\BOOKMARK [1][-]{section.3}{Bonus Task: Implementation in ROS}{}% 9

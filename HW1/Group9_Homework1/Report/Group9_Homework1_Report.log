@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  8 FEB 2023 18:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  8 FEB 2023 19:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -562,10 +562,6 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count326
 \l__pdf_internal_box=\box51
 )
-
-LaTeX Warning: Unused global option(s):
-    [8pt].
-
 (./Group9_Homework1_Report.aux)
 \openout1 = `Group9_Homework1_Report.aux'.
 
@@ -669,7 +665,7 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count334
-<logo.png, id=36, 301.125pt x 137.51375pt>
+<logo.png, id=40, 301.125pt x 137.51375pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
 Package pdftex.def Info: logo.png  used on input line 109.
@@ -695,68 +691,69 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 151.
-<fig1a.png, id=51, 1375.1375pt x 878.28125pt>
+<fig1a.png, id=55, 1375.1375pt x 878.28125pt>
 File: fig1a.png Graphic file (type png)
 <use fig1a.png>
 Package pdftex.def Info: fig1a.png  used on input line 186.
-(pdftex.def)             Requested size: 113.81102pt x 72.6762pt.
-<fig1b.png, id=52, 1375.1375pt x 878.28125pt>
+(pdftex.def)             Requested size: 142.26378pt x 90.862pt.
+<fig1b.png, id=56, 1375.1375pt x 878.28125pt>
 File: fig1b.png Graphic file (type png)
 <use fig1b.png>
 Package pdftex.def Info: fig1b.png  used on input line 191.
-(pdftex.def)             Requested size: 113.81102pt x 72.6762pt.
-<fig2.png, id=55, 798.985pt x 458.71375pt>
-File: fig2.png Graphic file (type png)
-<use fig2.png>
-Package pdftex.def Info: fig2.png  used on input line 208.
-(pdftex.def)             Requested size: 99.58464pt x 57.17108pt.
+(pdftex.def)             Requested size: 142.26378pt x 90.862pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.211 \end{figure}
-                   [1 <./fig1a.png> <./fig1b.png>]
-<fig3a.png, id=82, 1375.1375pt x 878.28125pt>
+l.204 
+       [1 <./fig1a.png> <./fig1b.png>]
+<fig2.png, id=83, 798.985pt x 458.71375pt>
+File: fig2.png Graphic file (type png)
+<use fig2.png>
+Package pdftex.def Info: fig2.png  used on input line 208.
+(pdftex.def)             Requested size: 113.81102pt x 65.33939pt.
+<fig3a.png, id=85, 1375.1375pt x 878.28125pt>
 File: fig3a.png Graphic file (type png)
 <use fig3a.png>
 Package pdftex.def Info: fig3a.png  used on input line 219.
 (pdftex.def)             Requested size: 99.58464pt x 63.59pt.
-<fig3b.png, id=83, 1375.1375pt x 878.28125pt>
+<fig3b.png, id=86, 1375.1375pt x 878.28125pt>
 File: fig3b.png Graphic file (type png)
 <use fig3b.png>
 Package pdftex.def Info: fig3b.png  used on input line 225.
 (pdftex.def)             Requested size: 99.58464pt x 63.59pt.
-<fig3c.png, id=84, 1375.1375pt x 878.28125pt>
+<fig3c.png, id=87, 1375.1375pt x 878.28125pt>
 File: fig3c.png Graphic file (type png)
 <use fig3c.png>
 Package pdftex.def Info: fig3c.png  used on input line 231.
 (pdftex.def)             Requested size: 99.58464pt x 63.59pt.
-<fig3d.png, id=85, 1375.1375pt x 878.28125pt>
+<fig3d.png, id=88, 1375.1375pt x 878.28125pt>
 File: fig3d.png Graphic file (type png)
 <use fig3d.png>
 Package pdftex.def Info: fig3d.png  used on input line 237.
 (pdftex.def)             Requested size: 99.58464pt x 63.59pt.
-<fig4a.png, id=95, 1375.1375pt x 878.28125pt>
+ [2 <./fig2.png> <./fig3a.png> <./fig3b.png> <./fig3c.png> <./fig3d.png>]
+<fig4a.png, id=110, 1375.1375pt x 878.28125pt>
 File: fig4a.png Graphic file (type png)
 <use fig4a.png>
 Package pdftex.def Info: fig4a.png  used on input line 262.
 (pdftex.def)             Requested size: 113.81102pt x 72.6762pt.
-<fig4e.png, id=96, 1375.1375pt x 878.28125pt>
+<fig4e.png, id=111, 1375.1375pt x 878.28125pt>
 File: fig4e.png Graphic file (type png)
 <use fig4e.png>
 Package pdftex.def Info: fig4e.png  used on input line 269.
 (pdftex.def)             Requested size: 113.81102pt x 72.6762pt.
-<fig4b.png, id=97, 1375.1375pt x 878.28125pt>
+<fig4b.png, id=112, 1375.1375pt x 878.28125pt>
 File: fig4b.png Graphic file (type png)
 <use fig4b.png>
 Package pdftex.def Info: fig4b.png  used on input line 275.
 (pdftex.def)             Requested size: 113.81102pt x 72.6762pt.
-<fig4c.png, id=98, 1375.1375pt x 878.28125pt>
+<fig4c.png, id=113, 1375.1375pt x 878.28125pt>
 File: fig4c.png Graphic file (type png)
 <use fig4c.png>
 Package pdftex.def Info: fig4c.png  used on input line 281.
 (pdftex.def)             Requested size: 113.81102pt x 72.6762pt.
-<fig4d.png, id=99, 1375.1375pt x 878.28125pt>
+<fig4d.png, id=114, 1375.1375pt x 878.28125pt>
 File: fig4d.png Graphic file (type png)
 <use fig4d.png>
 Package pdftex.def Info: fig4d.png  used on input line 287.
@@ -765,64 +762,64 @@ File: fig3c.png Graphic file (type png)
 <use fig3c.png>
 Package pdftex.def Info: fig3c.png  used on input line 293.
 (pdftex.def)             Requested size: 113.81102pt x 72.6762pt.
- [2 <./fig2.png> <./fig3a.png> <./fig3b.png> <./fig3c.png> <./fig3d.png>]
-<211.png, id=113, 1360.08125pt x 357.335pt>
+<211.png, id=117, 1360.08125pt x 357.335pt>
 File: 211.png Graphic file (type png)
 <use 211.png>
 Package pdftex.def Info: 211.png  used on input line 321.
-(pdftex.def)             Requested size: 213.39566pt x 56.06245pt.
-<2.1_2.png, id=114, 1357.07pt x 350.30875pt>
+(pdftex.def)             Requested size: 426.79134pt x 112.13037pt.
+<2.1_2.png, id=118, 1357.07pt x 350.30875pt>
 File: 2.1_2.png Graphic file (type png)
 <use 2.1_2.png>
 Package pdftex.def Info: 2.1_2.png  used on input line 327.
-(pdftex.def)             Requested size: 213.39566pt x 55.08304pt.
- [3 <./fig4a.png> <./fig4e.png> <./fig4b.png> <./fig4c.png> <./fig4d.png> <./21
-1.png (PNG copy)> <./2.1_2.png (PNG copy)>]
-<fig6a.jpg, id=132, 1606.0pt x 903.375pt>
+(pdftex.def)             Requested size: 426.79134pt x 110.16609pt.
+ [3 <./fig4a.png> <./fig4e.png> <./fig4b.png> <./fig4c.png> <./fig4d.png>]
+<fig6a.jpg, id=135, 1606.0pt x 903.375pt>
 File: fig6a.jpg Graphic file (type jpg)
 <use fig6a.jpg>
 Package pdftex.def Info: fig6a.jpg  used on input line 355.
-(pdftex.def)             Requested size: 93.89418pt x 52.80794pt.
-<fig6b.jpg, id=133, 1606.0pt x 903.375pt>
+(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
+<fig6b.jpg, id=136, 1606.0pt x 903.375pt>
 File: fig6b.jpg Graphic file (type jpg)
 <use fig6b.jpg>
 Package pdftex.def Info: fig6b.jpg  used on input line 361.
-(pdftex.def)             Requested size: 93.89418pt x 52.80794pt.
-<fig6c.jpg, id=134, 488.57532pt x 273.27094pt>
+(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
+<fig6c.jpg, id=137, 488.57532pt x 273.27094pt>
 File: fig6c.jpg Graphic file (type jpg)
 <use fig6c.jpg>
 Package pdftex.def Info: fig6c.jpg  used on input line 367.
-(pdftex.def)             Requested size: 93.89418pt x 52.51411pt.
-<fig6d.jpg, id=135, 488.57532pt x 278.54062pt>
+(pdftex.def)             Requested size: 99.58464pt x 55.69981pt.
+<fig6d.jpg, id=138, 488.57532pt x 278.54062pt>
 File: fig6d.jpg Graphic file (type jpg)
 <use fig6d.jpg>
 Package pdftex.def Info: fig6d.jpg  used on input line 373.
-(pdftex.def)             Requested size: 93.89418pt x 53.52678pt.
-<fig7a.jpg, id=137, 1606.0pt x 903.375pt>
+(pdftex.def)             Requested size: 99.58464pt x 56.77393pt.
+ [4 <./211.png (PNG copy)> <./2.1_2.png (PNG copy)> <./fig6a.jpg> <./fig6b.jpg>
+ <./fig6c.jpg> <./fig6d.jpg>]
+<fig7a.jpg, id=145, 1606.0pt x 903.375pt>
 File: fig7a.jpg Graphic file (type jpg)
 <use fig7a.jpg>
 Package pdftex.def Info: fig7a.jpg  used on input line 393.
-(pdftex.def)             Requested size: 93.89418pt x 52.80794pt.
-<fig7b.jpg, id=138, 1606.0pt x 903.375pt>
+(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
+<fig7b.jpg, id=146, 1606.0pt x 903.375pt>
 File: fig7b.jpg Graphic file (type jpg)
 <use fig7b.jpg>
 Package pdftex.def Info: fig7b.jpg  used on input line 399.
-(pdftex.def)             Requested size: 93.89418pt x 52.80794pt.
+(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
 
 Underfull \hbox (badness 1142) in paragraph at lines 400--400
 []\OT1/cmr/m/n/7 (b) |Pro-cessed seg-mented im-
  []
 
-<fig7c.jpg, id=139, 1606.0pt x 903.375pt>
+<fig7c.jpg, id=147, 1606.0pt x 903.375pt>
 File: fig7c.jpg Graphic file (type jpg)
 <use fig7c.jpg>
 Package pdftex.def Info: fig7c.jpg  used on input line 405.
-(pdftex.def)             Requested size: 93.89418pt x 52.80794pt.
-<fig7d.jpg, id=140, 1606.0pt x 903.375pt>
+(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
+<fig7d.jpg, id=148, 1606.0pt x 903.375pt>
 File: fig7d.jpg Graphic file (type jpg)
 <use fig7d.jpg>
 Package pdftex.def Info: fig7d.jpg  used on input line 411.
-(pdftex.def)             Requested size: 93.89418pt x 52.80794pt.
+(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
 
 Underfull \hbox (badness 1142) in paragraph at lines 412--412
 []\OT1/cmr/m/n/7 (d) |Pro-cessed seg-mented im-
@@ -831,22 +828,22 @@ Underfull \hbox (badness 1142) in paragraph at lines 412--412
 \tf@thm=\write4
 \openout4 = `Group9_Homework1_Report.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 436.
-[4 <./fig6a.jpg> <./fig6b.jpg> <./fig6c.jpg> <./fig6d.jpg> <./fig7a.jpg> <./fig
-7b.jpg> <./fig7c.jpg> <./fig7d.jpg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 436.
- (./Group9_Homework1_Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 436.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 436.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 439.
+[5 <./fig7a.jpg> <./fig7b.jpg> <./fig7c.jpg> <./fig7d.jpg>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 439.
+
+(./Group9_Homework1_Report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 439.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 439.
 Package rerunfilecheck Info: File `Group9_Homework1_Report.out' has not changed
 .
-(rerunfilecheck)             Checksum: AFB226FC46C3887D3995AE256BCFDF98;610.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 436.
+(rerunfilecheck)             Checksum: 612B33731F7DC0571A97F1F7B7A09F6C;678.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 439.
  ) 
 Here is how much of TeX's memory you used:
- 11800 strings out of 481239
- 176516 string characters out of 5920376
- 643262 words of memory out of 5000000
+ 11802 strings out of 481239
+ 176536 string characters out of 5920376
+ 641261 words of memory out of 5000000
  26798 multiletter control sequences out of 15000+600000
  540808 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -862,10 +859,10 @@ blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i12.pfb>
-Output written on Group9_Homework1_Report.pdf (5 pages, 2877230 bytes).
+Output written on Group9_Homework1_Report.pdf (6 pages, 2877650 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 180 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 199 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 188 words of extra memory for PDF output out of 10000 (max. 10000000)
 
