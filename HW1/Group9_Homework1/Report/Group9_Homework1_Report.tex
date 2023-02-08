@@ -214,26 +214,26 @@ We paint the segmented ground point cloud blue and don't use them for clustering
 	\centering
 	\begin{minipage}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=5cm]{fig3a.png}
-		\subcaption{$eps=0.5$, $min\_samples=5$ \\ \centering $n\_cluster=152$, $n\_noise=3105$}
+		\includegraphics[width=6cm]{fig3a.png}
+		\subcaption{$eps=0.5$, $min\_samples=5$ \\ \centering $n\_cluster=166$, $n\_noise=3256$}
 		\label{fig3a}
 	\end{minipage}
 	\begin{minipage}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=5cm]{fig3b.png}
-		\subcaption{$eps=0.25$, $min\_samples=5$ \\ \centering $n\_cluster=235$, $n\_noise=6186$}
+		\includegraphics[width=6cm]{fig3b.png}
+		\subcaption{$eps=0.25$, $min\_samples=5$ \\ \centering $n\_cluster=200$, $n\_noise=5835$}
 		\label{fig3b}
 	\end{minipage}
 	\begin{minipage}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=5cm]{fig3c.png}
-		\subcaption{$eps=0.5$, $min\_samples=10$ \\ \centering $n\_cluster=39$, $n\_noise=5050$}
+		\includegraphics[width=6cm]{fig3c.png}
+		\subcaption{$eps=0.5$, $min\_samples=10$ \\ \centering $n\_cluster=44$, $n\_noise=4847$}
 		\label{fig3c}
 	\end{minipage}
 	\begin{minipage}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=5cm]{fig3d.png}
-		\subcaption{$eps=0.5$, $min\_samples=20$ \\ \centering $n\_cluster=25$, $n\_noise=7519$}
+		\includegraphics[width=6cm]{fig3d.png}
+		\subcaption{$eps=0.5$, $min\_samples=20$ \\ \centering $n\_cluster=21$, $n\_noise=6750$}
 		\label{fig3d}
 	\end{minipage}
 	\caption{Clustering results by DBSCAN algorithm for frame1}
@@ -241,7 +241,74 @@ We paint the segmented ground point cloud blue and don't use them for clustering
 \end{figure} 
 
 It is easy to see that larger $min\_samples$ or smaller $eps$ stands for higher density to form a cluster. In Fig.~\ref{fig3b}, the density requirement is too high and causes bad clustering performance and large number of noise points. Also compare Fig.~\ref{fig3c} and Fig.~\ref{fig3d}, where we remain $eps$ the same and increase the $min\_samples$ requirements, we can find the clustering accuracy increases but it loses more information and generates more noise points. We finally choose the case Fig.~\ref{fig3c} as results written to the json file.
-	
+
+\subsection{Comparison between Different Clustering Methods}
+
+\hspace{1.0em}
+OPTICS is an extension version of DBSCAN and make the algorithm no longer sensitive to the radius $eps$. Given the $min\_samples$, OPTICS algorithm will produce an augmented cluster order for analysis and automatically choose the appropriate $eps$. Here we remain $min\_samples=10$ and the result is shown in Fig.~\ref{fig4a}, where more clusters are formed but some noise is also included.
+
+Meanshift is another density-based clustering algorithm. It assumes that different clusters conform to different probability density distributions and aims at finding the fastest direction in which the sample density increases. The areas with high density correspond to the maximum value of the distribution, so data points should belong to one cluster if their density converge to the local maximum. Meanshift adjusts number of clusters by bandwidth, and here we set $quantile=0.01, n\_samples=1000$ to estimate the bandwidth, the result is shown in Fig.~\ref{fig4b} 
+
+Birch algorithm builds an Clustering Feature Tree to realize quick clustering. It is computationally efficient and suits for large dataset. Usually Birch needs some priori knowledge about cluster number and cannot directly detect noise points, which requires removing some mini-cluster afterwards. The results is shown in Fig.~\ref{fig4c} where we set estimated cluster number to be 100. The results of CF Tree can be optimized by hierarchical clustering methods such as AgglomerativeClustering (Fig.~\ref{fig4d}, $n\_clusters=100$). 
+
+K-Means is a partition-based clustering algorithm that uses distance as a measure of similarity between data objects. We also set $n\_clusters=100$ and $tol=0.001$, the results is shown in Fig.~\ref{fig4e}.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=4cm]{fig4a.png}
+		\subcaption{OPTICS}
+		%  \\ \centering $n\_cluster=432$, $n\_noise=7080$
+		\label{fig4a}
+	\end{minipage}
+	\begin{minipage}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=4cm]{fig4e.png}
+		\subcaption{Mean Shift}
+		\label{fig4b}
+	\end{minipage}
+	\begin{minipage}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=4cm]{fig4b.png}
+		\subcaption{Birch}
+		\label{fig4c}
+	\end{minipage}
+	\begin{minipage}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=4cm]{fig4c.png}
+		\subcaption{Agglomerative Cluster}
+		\label{fig4d}
+	\end{minipage}
+	\begin{minipage}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=4cm]{fig4d.png}
+		\subcaption{KMeans}
+		\label{fig4e}
+	\end{minipage}
+	\begin{minipage}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=4cm]{fig3c.png}
+		\subcaption{DBSCAN}
+		\label{fig4f}
+	\end{minipage}
+	\caption{Comparison between different clustering algorithm for frame1}
+	\label{fig4}
+\end{figure} 
+
+
+From the experiment results, we find that Birch, AgglomerativeCluster and KMeans need prior knowledge of cluster numbers and are easy to include noise points. Among them, K-Means can only process convex clustering. Density-based methods instead can do clustering without estimating the total number of clusters, and DBSCAN \& OPTICS perform well in our scenes. 
+
+
+
+
+
+
+
+
+
+
+
 	
 \end{document}
 
