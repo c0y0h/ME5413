@@ -41,6 +41,7 @@ ii. Results:    Image files
 2. Open "Task2" file with MATLAB
 3. Enter "Code" file and run "Execution_2A.m" (do not foget to change the image path to your absolute path) and will find result images in "Results/result_2A/" file
 3. Enter "Code" file and run "Execution_2B.m" (do not foget to change the image path to your absolute path) and will find result images in "Results/result_2B/" file
+3. Enter "Code" file and run "Execution_2C.m" (do not foget to change the image path to your absolute path) and will find result images in "Results/result_2C/" file
 
 ## Bonus Task: Implementation in ROS
 1. Perform Lidar Clustering in ROS by subscribing to the topic - /me5413/lidar_top 
