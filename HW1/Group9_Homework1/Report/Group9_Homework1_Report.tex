@@ -1,4 +1,4 @@
-\documentclass[hyperref]{article}
+\documentclass[8pt]{article}
 %MS%%%%%%%%%%%%%%%%%%%% Article Format %%%%%%%%%%%%%%%%%
 %+++++++++++++++++++++ Usepackage +++++++++++++++%%
 \usepackage{graphicx} %% Package for Figure
@@ -50,7 +50,7 @@
 \graphicspath{{figure/}}                                 %% Path of Figures
 \usepackage[a4paper]{geometry}                           %% Paper size
 \geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm} %% Margin
-\linespread{1.2}      
+\linespread{1.1}      
 
 % matlab code package
 \usepackage{appendix}
@@ -87,6 +87,8 @@
 	%    break,case,catch,continue,elseif,else,end,for,function,global,%
 	%    if,otherwise,persistent,return,switch,try,while,...},%
 }
+
+ \setlength{\parskip}{0.1em}
 
                                    %% Line Spread
 %MS%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Format %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,12 +183,12 @@ where $P$ is the probability that we hope RANSAC algorithm to get the correct mo
 	\centering
 	\begin{minipage}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=6cm]{fig1a.png}
+		\includegraphics[width=4cm]{fig1a.png}
 		\subcaption{Initial pointcloud}
 	\end{minipage}
 	\begin{minipage}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=6cm]{fig1b.png}
+		\includegraphics[width=4cm]{fig1b.png}
 		\subcaption{Segmented ground pointcloud}
 	\end{minipage}
 	\caption{Cloud points before and after ground segmentaion in frame1}
@@ -203,7 +205,7 @@ DBSCAN (Density-Based Spatial Clustering of Applications with Noise) algorithm c
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=6cm]{fig2.png}
+	\includegraphics[width=3.5cm]{fig2.png}
 	\caption{DBSCAN clustering principle}
 	\label{fig2}
 \end{figure} 
@@ -212,27 +214,27 @@ We paint the segmented ground point cloud blue and don't use them for clustering
 
 \begin{figure}[H]
 	\centering
-	\begin{minipage}[t]{0.4\textwidth}
+	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=6cm]{fig3a.png}
+		\includegraphics[width=3.5cm]{fig3a.png}
 		\subcaption{$eps=0.5$, $min\_samples=5$ \\ \centering $n\_cluster=166$, $n\_noise=3256$}
 		\label{fig3a}
 	\end{minipage}
-	\begin{minipage}[t]{0.4\textwidth}
+	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=6cm]{fig3b.png}
+		\includegraphics[width=3.5cm]{fig3b.png}
 		\subcaption{$eps=0.25$, $min\_samples=5$ \\ \centering $n\_cluster=200$, $n\_noise=5835$}
 		\label{fig3b}
 	\end{minipage}
-	\begin{minipage}[t]{0.4\textwidth}
+	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=6cm]{fig3c.png}
+		\includegraphics[width=3.5cm]{fig3c.png}
 		\subcaption{$eps=0.5$, $min\_samples=10$ \\ \centering $n\_cluster=44$, $n\_noise=4847$}
 		\label{fig3c}
 	\end{minipage}
-	\begin{minipage}[t]{0.4\textwidth}
+	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=6cm]{fig3d.png}
+		\includegraphics[width=3.5cm]{fig3d.png}
 		\subcaption{$eps=0.5$, $min\_samples=20$ \\ \centering $n\_cluster=21$, $n\_noise=6750$}
 		\label{fig3d}
 	\end{minipage}
@@ -297,7 +299,128 @@ K-Means is a partition-based clustering algorithm that uses distance as a measur
 \end{figure} 
 
 
-From the experiment results, we find that Birch, AgglomerativeCluster and KMeans need prior knowledge of cluster numbers and are easy to include noise points. Among them, K-Means can only process convex clustering. Density-based methods instead can do clustering without estimating the total number of clusters, and DBSCAN \& OPTICS perform well in our scenes. 
+From the experiment results, we find that Birch, AgglomerativeCluster and KMeans need prior knowledge of cluster numbers and are easy to include noise points. Among them, K-Means can only process convex clustering. Density-based methods instead can do clustering without estimating the total number of clusters, and DBSCAN (Fig.~\ref{fig4f}) \& OPTICS perform well in our scenes. 
+
+
+\section{Task2: Image Segmentation}
+
+\hspace{1.0em}
+In task 2, we need to perform image segmentation on the given ten street scene images, give our own analysis on the algorithm and suggest improvement to it. The method of DeepLabv3 is mainly used to execute the code on MATLAB. The segmented result image is saved in the “Result” folder.
+
+\subsection{Deeplabv3 Retrained Model}
+
+\hspace{1.0em}
+Deeplabv3+ belongs to the semantic segmentation network, which classifies each pixel in the image to segment the image. Semantic segmentation has a wide range of applications, including road segmentation for autonomous driving. This pre-trained model uses the CamVid dataset from the University of Cambridge, and the weights are initialized by a pre-trained Resnet-18 network.
+
+In this question, we directly perform image segmentation using DeepLabv3+ pretrained model on the 10 sample images. And the output classes of the network are modified to 5 classes: 1. vehicles 2. bicycles and motorcycles 3. pedestrians 4. others 5. drivable surface. The segmentation result is shown in Fig.~\ref{fig5}. 
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=7.5cm]{211.png}
+		\subcaption{Original sample images}
+		\label{fig5a}
+	\end{minipage}
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=7.5cm]{2.1_2.png}
+		\subcaption{Segmented Images}
+		\label{fig5b}
+	\end{minipage}
+	\caption{Segmentation performed with DeepLabv3+}
+	\label{fig5}
+\end{figure} 
+
+
+\subsection{Analysis on the segmentation performance}
+
+\hspace{1.0em}
+It can be seen that the performance of image segmentation is not completely accurate, and there are still some failure points. To illustrate the failure points, we also tested 5 images of our own.
+
+The failure points can be concluded as follows:
+
+\begin{itemize}
+	\item[1.] When the colour of the object is close to the background, it may not be recognized by network. (Blue circle in Fig.~\ref{fig6a})
+	\item[2.] When two objects are too close, there is a chance that the background between objects will be segmented into object class. (Purple circle in Fig.~\ref{fig6b})
+	\item[3.] Inaccurate segmentation when objects overlap together. (Red circle in Fig.~\ref{fig6c})
+	\item[4.] Hard to be recognized by network when objects are too small in the image. (Green circle in Fig Fig.~\ref{fig6d})
+	\item[5.] Mis-segmentation noise in irrelevant places in the images. (Orange circle in Fig.~\ref{fig6c} and Fig.~\ref{fig6d})
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.23\textwidth}
+		\centering
+		\includegraphics[width=3.3cm]{fig6a.jpg}
+		\subcaption{}
+		\label{fig6a}
+	\end{minipage}
+	\begin{minipage}[t]{0.23\textwidth}
+		\centering
+		\includegraphics[width=3.3cm]{fig6b.jpg}
+		\subcaption{}
+		\label{fig6b}
+	\end{minipage}
+	\begin{minipage}[t]{0.23\textwidth}
+		\centering
+		\includegraphics[width=3.3cm]{fig6c.jpg}
+		\subcaption{}
+		\label{fig6c}
+	\end{minipage}
+	\begin{minipage}[t]{0.23\textwidth}
+		\centering
+		\includegraphics[width=3.3cm]{fig6d.jpg}
+		\subcaption{}
+		\label{fig6d}
+	\end{minipage}
+	\caption{Example images showing failure points}
+	\label{fig6}
+\end{figure} 
+
+
+\subsection{Improvement to the segmentation method}
+
+\hspace{1.0em}
+Since the segmentation results of the neural network are not perfect, can we improve the segmentation method in the pre-processing and post-processing stages? We first realized that this is different from the traditional image segmentation problem. Methods such as filtering noise points, increasing image contrast, etc. are not effective.
+
+Here is the method of segmentation using the Deeplabv3 pre-trained neural network model. If you take a picture from his CamVid dataset for segmentation, the result must be accurate. Therefore, we realized that in the pre-processing stage, we can resize the picture to the size of the picture in the CamVid dataset (720x960) which can more fit the parameters of the training model. Then we implemented it again on the 10 sample image. The results are good as noise points decreasing (Fig.~\ref{fig6}). We can see the noise parts in red circle is disappeared after this process.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.24\textwidth}
+		\centering
+		\includegraphics[width=3.3cm]{fig7a.jpg}
+		\subcaption{Original segmented image1}
+		\label{fig7a}
+	\end{minipage}
+	\begin{minipage}[t]{0.24\textwidth}
+		\centering
+		\includegraphics[width=3.3cm]{fig7b.jpg}
+		\subcaption{Processed segmented image1}
+		\label{fig7b}
+	\end{minipage}
+	\begin{minipage}[t]{0.24\textwidth}
+		\centering
+		\includegraphics[width=3.3cm]{fig7c.jpg}
+		\subcaption{Original segmented image2}
+		\label{fig7c}
+	\end{minipage}
+	\begin{minipage}[t]{0.24\textwidth}
+		\centering
+		\includegraphics[width=3.3cm]{fig7d.jpg}
+		\subcaption{Processed segmented image2}
+		\label{fig7d}
+	\end{minipage}
+	\caption{Improved segmented images}
+	\label{fig7}
+\end{figure}
+
+
+
+
+
+
 
 
 

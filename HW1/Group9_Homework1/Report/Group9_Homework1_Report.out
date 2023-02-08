@@ -2,3 +2,7 @@
 \BOOKMARK [2][-]{subsection.1.1}{Ground Point Cloud Segmentation}{section.1}% 2
 \BOOKMARK [2][-]{subsection.1.2}{DBSCAN Algorithm}{section.1}% 3
 \BOOKMARK [2][-]{subsection.1.3}{Comparison between Different Clustering Methods}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Task2: Image Segmentation}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Deeplabv3 Retrained Model}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Analysis on the segmentation performance}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Improvement to the segmentation method}{section.2}% 8
