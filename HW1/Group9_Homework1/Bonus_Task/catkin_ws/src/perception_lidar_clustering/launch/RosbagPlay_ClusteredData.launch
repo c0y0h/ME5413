@@ -1,0 +1,11 @@
+<launch>
+
+  <!-- rviz start -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find perception_lidar_clustering)/config/setting1.rviz" />
+
+  <!-- play rosbag with initial lidar data -->
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock -r 12.5 $(find perception_lidar_clustering)/rosbag/BonusTask_rosbag.bag"/>
+  
+
+  
+</launch>

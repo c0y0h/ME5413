@@ -3,6 +3,13 @@
   <!-- rviz start -->
   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find perception_lidar_clustering)/config/setting1.rviz" />
 
+  <!-- record begin -->
+  <node pkg="rosbag" type="record" 
+        name="bag_record" 
+        args="euclidean_cluster -O $(find perception_lidar_clustering)/rosbag/BonusTask_rosbag.bag" />
+
+
+
   <!-- do clustering -->
   <node pkg="perception_lidar_clustering" type="do_clustering" name="do_clustering" args="0.5 19" />
 
