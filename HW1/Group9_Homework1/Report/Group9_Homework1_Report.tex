@@ -229,7 +229,7 @@ We paint the segmented ground point cloud blue and don't use them for clustering
 	\begin{minipage}[t]{0.24\textwidth}
 		\centering
 		\includegraphics[width=3.5cm]{fig3c.png}
-		\subcaption{$eps=0.5$, $min\_samples=10$ \\ \centering $n\_cluster=44$, $n\_noise=4847$}
+		\subcaption{$eps=0.5$, $min\_samples=10$ \\ \centering $n\_cluster=44$, $n\_noise=4851$}
 		\label{fig3c}
 	\end{minipage}
 	\begin{minipage}[t]{0.24\textwidth}
@@ -384,7 +384,7 @@ The failure points can be concluded as follows:
 \hspace{1.0em}
 Since the segmentation results of the neural network are not perfect, can we improve the segmentation method in the pre-processing and post-processing stages? We first realized that this is different from the traditional image segmentation problem. Methods such as filtering noise points, increasing image contrast, etc. are not effective.
 
-Here is the method of segmentation using the Deeplabv3 pre-trained neural network model. If you take a picture from his CamVid dataset for segmentation, the result must be accurate. Therefore, we realized that in the pre-processing stage, we can resize the picture to the size of the picture in the CamVid dataset (720x960) which can more fit the parameters of the training model. Then we implemented it again on the 10 sample image. The results are good as noise points decreasing (Fig.~\ref{fig6}). We can see the noise parts in red circle is disappeared after this process.
+Here is the method of segmentation using the Deeplabv3 pre-trained neural network model. If you take a picture from his CamVid dataset for segmentation, the result must be accurate. Therefore, we realized that in the pre-processing stage, we can resize the picture to the size of the picture in the CamVid dataset (720x960) which can more fit the parameters of the training model. Then we implemented it again on the 10 sample image. The results are good as noise points decreasing (Fig.~\ref{fig7}). We can see the noise parts in red circle is disappeared after this process.
 
 \begin{figure}[H]
 	\centering
