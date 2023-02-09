@@ -1,10 +1,9 @@
 <launch>
 
   <!-- rviz start -->
-  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find perception_lidar_clustering)/config/settings.rviz" /> -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find perception_lidar_clustering)/config/settings.rviz" />
 
   <!-- play rosbag with initial lidar data -->
-  <!-- The path of rosbag must be absolute path -->
   <node pkg="rosbag" type="play" name="player" output="screen" args="--clock $(find perception_lidar_clustering)/rosbag/me5413_lidar.bag"/>
   
 

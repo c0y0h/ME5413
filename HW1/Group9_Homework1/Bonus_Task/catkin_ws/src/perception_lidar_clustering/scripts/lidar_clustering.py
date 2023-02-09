@@ -101,7 +101,7 @@ def ground_segmentation(data):
 def dbscan_clustering(data):
     # sklearn dbscan
     # eps: scan radius;  min_samples: min samples in the circle; n_jobs ：CPU form
-    cluster_index = DBSCAN(eps=0.3,min_samples=5,n_jobs=-1).fit_predict(data)
+    cluster_index = DBSCAN(eps=0.5,min_samples=10,n_jobs=-1).fit_predict(data)
     print(cluster_index)
     return cluster_index
 
@@ -155,6 +155,7 @@ def talker():
     pub = rospy.Publisher('pypubulisher', String, queue_size=10)
     rospy.init_node('cloudpoint', anonymous=True)
     rate = rospy.Rate(10) # 10hz
+    hello_str = "hellow world!"
     while not rospy.is_shutdown():
         pub.publish(hello_str)
         rate.sleep()
@@ -162,5 +163,5 @@ def talker():
 if __name__ == '__main__':
     cluster_indexList = []
     listener()
-    # talker()
+    talker()
 
