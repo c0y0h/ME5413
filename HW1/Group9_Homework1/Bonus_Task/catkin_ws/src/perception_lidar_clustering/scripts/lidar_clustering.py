@@ -18,13 +18,16 @@ from pyntcloud import PyntCloud
 import math
 import random
 from collections import defaultdict
-from sklearn.cluster import DBSCAN
+from sklearn.cluster import DBSCAN, KMeans
+
+import time
 
 
 def receive_points(data):
     matrix = np.array(data)
     points = matrix[:, :3]
     return points
+
 
 # RANSAC ground pointcloud segmentation
 def ground_segmentation(data):
@@ -82,7 +85,7 @@ def ground_segmentation(data):
         # enough inliers?
         if total_inlier > n*(1-outline_ratio):
             break
-    print("iters = %f" %iters)
+    # print("iters = %f" %iters)
     # points after segmentation
     idx_segmented = np.logical_not(idx_ground)
     ground_cloud = data[idx_ground]
@@ -94,8 +97,8 @@ def ground_segmentation(data):
 def dbscan_clustering(data):
     # sklearn dbscan
     # eps: scan radius;  min_samples: min samples in the circle; n_jobs ：CPU form
-    cluster_index = DBSCAN(eps=0.5,min_samples=10,n_jobs=-1).fit_predict(data)
-    print(cluster_index)
+    cluster_index = DBSCAN(eps=0.6,min_samples=8,algorithm='ball_tree', leaf_size=30).fit_predict(data)
+    
     return cluster_index
 
 
@@ -105,62 +108,46 @@ def dbscan_clustering(data):
 def do_clustering(initial_data):
 
     origin_points = receive_points(initial_data) # read data
-    origin_points_df = DataFrame(origin_points,columns=['x', 'y', 'z'])  # [0,3)
-    point_cloud_pynt = PyntCloud(origin_points_df)  # store in structs
-    point_cloud_o3d = point_cloud_pynt.to_instance("open3d", mesh=False) # to instance
 
-    # ground segmentation using RANSAC
-    ground_points, segmented_points = ground_segmentation(data=origin_points)
-    
+    # # ground segmentation using self-written RANSAC
+    # ground_points, segmented_points = ground_segmentation(data=origin_points)
+
+    # ground segmentation using o3d ransac
+    pcd = o3d.geometry.PointCloud()
+    pcd.points = o3d.utility.Vector3dVector(origin_points)
+    plane_model, ground_cloud = pcd.segment_plane(distance_threshold=0.3,
+                                         ransac_n=3,
+                                         num_iterations=1000)
+    segmented_cloud = pcd.select_by_index(ground_cloud, invert=True)
+
+    # downsample
+    down_pcd = segmented_cloud.voxel_down_sample(voxel_size=0.2)
+    print("Before downsample: %d, After downsample: %d" %(np.asarray(segmented_cloud.points).shape[0], np.asarray(down_pcd.points).shape[0]))
+
+    # # remove points that are further away from their neighbors in average
+    # cl, ind = down_pcd.remove_statistical_outlier(nb_neighbors=10, std_ratio=2.0)
+    # downpcd_inlier_cloud = down_pcd.select_by_index(ind)
+
+    segmented_points = np.asarray(down_pcd.points)
+
     # use dbscan
     cluster_index = dbscan_clustering(segmented_points)
 
-    # process for tomorrow
-    points = 
-    colors = 
+    # give a random color for every class
+    points = segmented_points
+    colors = np.zeros(shape=points.shape)
+    for i in range(max(cluster_index) + 1):
+        r = round(255. * np.random.rand())
+        g = round(255. * np.random.rand())
+        b = round(255. * np.random.rand())
+        colors[np.argwhere(cluster_index == i)[:,0]] = [r, g, b]
+
+    print("This frame have %d surrounding points and form %d clusters!" %(len(points), max(cluster_index) + 1))
     
     return points, colors
 
-    # # Number of clusters in labels, ignoring noise if present.
-    # n_clusters_ = len(set(cluster_index)) - (1 if -1 in cluster_index else 0)
-    # n_noise_ = list(cluster_index).count(-1)
-
 
 # transform the clustered results to RGB point cloud for publishing and visualizing in rviz
-def numpy2cloud_msg1(points, colors, frame_id, stamp=None, seq=None):
-    """
-    @param points: numpy.ndarray (N, 3), float32
-    @param colors: numpy.ndarray (N, 3), uint8 [0, 255]
-    """
-    msg = PointCloud2()
-    if stamp is not None:
-        msg.header.stamp = stamp
-    if frame_id is not None:
-        msg.header.frame_id = frame_id
-    if seq is not None:
-        msg.header.seq = seq
-    
-    colors = (colors / 255).astype(np.float32)
-    msg.height = 1
-    msg.width = len(points)
-    msg.fields = [PointField('x', 0, PointField.FLOAT32, 1),
-                  PointField('y', 4, PointField.FLOAT32, 1),
-                  PointField('z', 8, PointField.FLOAT32, 1),
-                  PointField('r', 12, PointField.FLOAT32, 1),
-                  PointField('g', 16, PointField.FLOAT32, 1),
-                  PointField('b', 20, PointField.FLOAT32, 1)
-                  ]
-    msg.is_bigendian = False
-    msg.point_step = 24
-    msg.row_step = msg.point_step * len(points)
-    msg.is_dense = np.isfinite(points).all()
-
-    data = np.hstack((points, colors))  # (N, 3) + (N, 3) --> (N, 6)
-    msg.data = data.tostring()
-
-    return msg
-
-
 # optimize the bindwidth of msg
 def numpy2cloud_msg2(points, colors, frame_id, stamp=None, seq=None):
     """
@@ -182,7 +169,7 @@ def numpy2cloud_msg2(points, colors, frame_id, stamp=None, seq=None):
         msg.header.seq = seq
     
     msg.height = 1
-    msg.width = len(points)
+    msg.width = len(array)
     msg.fields = [PointField('x', 0, PointField.FLOAT32, 1),
                   PointField('y', 4, PointField.FLOAT32, 1),
                   PointField('z', 8, PointField.FLOAT32, 1),
@@ -199,44 +186,39 @@ def numpy2cloud_msg2(points, colors, frame_id, stamp=None, seq=None):
 
 
 # callback function, process the initial data 
-def callback_pointcloud(msg):
+def callback_pointcloud(msg, pub):
+
     assert isinstance(msg, PointCloud2)
+    global count
+    # if count % 9 == 0:
+    t_start = time.time()
 
     initial_points = point_cloud2.read_points_list(msg)
+
+    t_start1 = time.time()
+    points, colors = do_clustering(initial_points)
+    t_end1 = time.time()
+    print(t_end1-t_start1)
     
-    global points_gl, colors_gl
-    points_gl, points_gl = do_clustering(initial_points)
+    points = points.astype(np.float32)
+    colors = colors.astype(np.uint8)
 
-
-# subscribe to '/me5413/lidar_top' to get initial data
-def listener():
-    rospy.init_node('pylistener', anonymous=True)
-    #Subscriber(name of topic，type of data, callback function)
-    rospy.Subscriber('/me5413/lidar_top', PointCloud2, callback_pointcloud)
-    rospy.spin()
-
-
-# publish the clustered data
-def talker():
-    pub = rospy.Publisher('/pypublisher', PointCloud2, queue_size=1)
-    rospy.init_node('pypublisher', anonymous=True)
-    rate = rospy.Rate(10) # 10hz
-
-    global points_gl, colors_gl
-
-    while not rospy.is_shutdown():
-        if points_gl.shape[0] != 0:
-            pc2_msg = numpy2cloud_msg2(points_gl, colors_gl, '/lidar_top')
-            print("Published...")
-        else:
-            print("Wait for data!")
-        rate.sleep()
+    pc2_msg = numpy2cloud_msg2(points, colors, frame_id='lidar_top', stamp=rospy.Time().now())
+    pub.publish(pc2_msg)
+    
+    t_end = time.time()
+    count = count + 1
+    print("Published the %d th frame, cost %f s" %(count + 1, t_end - t_start))
+    # else:
+    #     count = count + 1
+    #     print("Skip the %d th frame" %count)
 
  
  
 if __name__ == '__main__':
-    points_gl = np.empty(shape=(0,1))
-    colors_gl = np.empty(shape=(0,1))
-    listener()
-    talker()
+    count = 0
+    rospy.init_node('mynode', anonymous=True)
+    pub = rospy.Publisher('pypublisher', PointCloud2, queue_size=1)
+    rospy.Subscriber('/me5413/lidar_top', PointCloud2, callback_pointcloud, pub, queue_size=1)
+    rospy.spin()
 

@@ -6,15 +6,15 @@
   <!-- record begin -->
   <node pkg="rosbag" type="record" 
         name="bag_record" 
-        args="euclidean_cluster -O $(find perception_lidar_clustering)/rosbag/BonusTask_rosbag.bag" />
-
+        args="pypublisher -O $(find perception_lidar_clustering)/rosbag/BonusTask_rosbag.bag" />
 
 
   <!-- do clustering -->
-  <node pkg="perception_lidar_clustering" type="do_clustering" name="do_clustering" args="0.5 19" />
+  <!-- <node pkg="perception_lidar_clustering" type="do_clustering" name="do_clustering" args="0.5 19" /> -->
+  <!-- <node pkg="perception_lidar_clustering" type="lidar_clustering.py" name="lidar_clustering" /> -->
 
   <!-- play rosbag with initial lidar data -->
-  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock -r 0.08 $(find perception_lidar_clustering)/rosbag/me5413_lidar.bag"/>
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock $(find perception_lidar_clustering)/rosbag/me5413_lidar.bag"/>
   
 
   

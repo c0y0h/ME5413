@@ -68,13 +68,37 @@ roslaunch perception_lidar_clustering RosbagPlay_InitialData.launch
 ```
 
 ### Do clustering and record the results as rosbag 
+Notice: 
+1. The result has been saved to rosbag/BonusTask_rosbag.bag, if you want to do clustering and record the result again, run the code.
+
+2. After run the python file in Terminal 2, you are recommended to wait for 15-20 seconds, since import packages need some time, if you immediately run the launch file in Terminal 3, you will miss some frames. Ofcourse, you can check the rostopic list and run the launch file after there shows the topic "pypublisher". 
+
+3. Since the DBSCAN clustering always need about 0.35s (even we segment the ground cloud and do downsampling), and read the data always need about 0.15s, and the initial data is published at a rate of 20Hz, we have to skip 8 frames in 9 frames.
+
+4. We also offer a rosbag (rosbag/BonusTask_rosbag_offlineProcess.bag) obtained by playing the initial rosbag slowerly (i.e. process the lidar data offline). This rosbag have the same number of frames (382) as the initial rosbag.
+
 ** Terminal 1 **
 ```
 roscore
 ```
 
+** Terminal 2 **
+```
+rosrun perception_lidar_clustering lidar_clustering.py
+```
 
-### Visualize the clustering results
+** Terminal 3 **
 ```
 roslaunch perception_lidar_clustering RosbagRecord_ClusteredData.launch
+```
+
+### Visualize the clustering results
+** Terminal 1 (The clustered results realtime) **
+```
+roslaunch perception_lidar_clustering RosbagRecord_ClusteredData.launch
+```
+
+** Terminal 2 (Play the offline-processed clustering results) **
+```
+roslaunch perception_lidar_clustering RosbagRecord_ClusteredDataOffline.launch
 ```
