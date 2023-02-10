@@ -1,25 +1,19 @@
 #!/usr/bin/env python
+
+# import sys, since we use open3d, you may need to change the path below to your anaconda site-packages
+import sys
+sys.path.append('/home/cyh/anaconda3/lib/python3.8/site-packages')
+
 import rospy
 from sensor_msgs.msg import PointCloud2
 from sensor_msgs import point_cloud2
 from sensor_msgs.msg import PointField
 
-# import
-import sys
-sys.path.append('/home/cyh/anaconda3/lib/python3.8/site-packages')
-
 import numpy as np
 import open3d as o3d
-import struct
-from sklearn import cluster, datasets, mixture
-import matplotlib.pyplot as plt
-from pandas import DataFrame
-from pyntcloud import PyntCloud
 import math
 import random
-from collections import defaultdict
-from sklearn.cluster import DBSCAN, KMeans
-
+from sklearn.cluster import DBSCAN
 import time
 
 
@@ -29,45 +23,43 @@ def receive_points(data):
     return points
 
 
-# RANSAC ground pointcloud segmentation
+# self-written RANSAC ground pointcloud segmentation
 def ground_segmentation(data):
     # initialize data
     idx_segmented = []
     segmented_cloud = []
     iters = 100     # maximum iteration  
-    sigma = 0.4     # maximum accepted error between data and model 数据和模型之间可接受的最大差值  
+    sigma = 0.4     # maximum accepted error between data and model
     ## plane model:  aX + bY + cZ +D= 0
     best_a = 0
     best_b = 0
     best_c = 0
     best_d = 0
     pretotal = 0    # number of inliers in last iteration
-    P = 0.99        # the probability of getting the correct model 希望的到正确模型的概率
+    P = 0.99        # the probability of getting the correct model 
     n = len(data)   # number of points 
     outline_ratio = 0.6   #e: outline_ratio  
     for i in range(iters):
         ground_cloud = []
         idx_ground = []
         # step1 choose the smallest datset to estimate the model, 3 points for a plane
-        # 选择可以估计出模型的最小数据集，对于平面拟合来说，就是三个点
         sample_index = random.sample(range(n),3)    # randomly select 3 points from dataset
         point1 = data[sample_index[0]]
         point2 = data[sample_index[1]]
         point3 = data[sample_index[2]]
         # step2 solve the model
-        ## first solve the normal vector 先求解法向量
+        ## first solve the normal vector
         point1_2 = (point1-point2)      # vector poin1 -> point2
         point1_3 = (point1-point3)      # vector poin1 -> point3
-        N = np.cross(point1_3,point1_2)            # get the normal vector of plane 向量叉乘求解 平面法向量
+        N = np.cross(point1_3,point1_2)            # get the normal vector of plane 
         ## slove model parameter a,b,c,d
         a = N[0]
         b = N[1]
         c = N[2]
         d = -N.dot(point1)
         # step3 use all the data to count the number of inliers 
-        # 将所有数据带入模型，计算出“内点”的数目；(累加在一定误差范围内的适合当前迭代推出模型的数据)
         total_inlier = 0
-        pointn_1 = (data - point1)    # sample（三点）外的点 与 sample内的三点其中一点 所构成的向量
+        pointn_1 = (data - point1)   
         distance = abs(pointn_1.dot(N))/ np.linalg.norm(N)     # distance
         # judge the inliers by distance
         idx_ground = (distance <= sigma)
@@ -190,28 +182,28 @@ def callback_pointcloud(msg, pub):
 
     assert isinstance(msg, PointCloud2)
     global count
-    # if count % 9 == 0:
-    t_start = time.time()
+    if count % 9 == 0:
+        t_start = time.time()
 
-    initial_points = point_cloud2.read_points_list(msg)
+        initial_points = point_cloud2.read_points_list(msg)
 
-    t_start1 = time.time()
-    points, colors = do_clustering(initial_points)
-    t_end1 = time.time()
-    print(t_end1-t_start1)
-    
-    points = points.astype(np.float32)
-    colors = colors.astype(np.uint8)
+        t_start1 = time.time()
+        points, colors = do_clustering(initial_points)
+        t_end1 = time.time()
+        print(t_end1-t_start1)
+        
+        points = points.astype(np.float32)
+        colors = colors.astype(np.uint8)
 
-    pc2_msg = numpy2cloud_msg2(points, colors, frame_id='lidar_top', stamp=rospy.Time().now())
-    pub.publish(pc2_msg)
-    
-    t_end = time.time()
-    count = count + 1
-    print("Published the %d th frame, cost %f s" %(count + 1, t_end - t_start))
-    # else:
-    #     count = count + 1
-    #     print("Skip the %d th frame" %count)
+        pc2_msg = numpy2cloud_msg2(points, colors, frame_id='lidar_top', stamp=rospy.Time().now())
+        pub.publish(pc2_msg)
+        
+        t_end = time.time()
+        count = count + 1
+        print("Published the %d th frame, cost %f s" %(count + 1, t_end - t_start))
+    else:
+        count = count + 1
+        print("Skip the %d th frame" %count)
 
  
  
