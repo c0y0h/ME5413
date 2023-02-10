@@ -421,9 +421,30 @@ Here is the method of segmentation using the Deeplabv3 pre-trained neural networ
 \section{Bonus Task: Implementation in ROS}
 
 \hspace{1.0em}
+In this section, the clustering method in Task1 is implemented in ROS. By subscribing the topic /me5413/lidar\_top, we can process the data and publish the clustered point cloud and the results are saved as in rosbag. We also find the initial data has 382 frames and is published at a rate of 20Hz, so some methods are used for accelerating the clustering algorithm.
+
+We test our self-written RANCAC algorithm and find its segmentation performance is far from perfect and cost a long time. Therefore, we use the $segment\_plane$ function in open3d and set the parameters $distance\_threshold=0.3, ransac\_n=3$ and $num\_iterations=1000$. Moreover, we use voxel downsampling method ($voxel\_down\_sample$ function) and successfully reduce by half of the initial points for clustering. However, the DBSCAN algorithm still needs about 0.35s and cannot process all frame. Therefore, we decide to realize real-time processing by dropping 8 out of every 9 frames. Though it's meaningless to play the initial rosbag slowly in real case, we offer the offline processing case and save the result to "BonusTask\_rosbag\_offlineProcess.bag".
+
+The initial lidar data and clustered results are visualize in Rviz (Fig.~\ref{fig7}).
 
 
-
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=5cm]{fig8b.png}
+		\subcaption{Initial lidar data}
+		\label{fig8a}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=5cm]{fig8a.png}
+		\subcaption{Results after clutering}
+		\label{fig8b}
+	\end{minipage}
+	\caption{Improved segmented images}
+	\label{fig8}
+\end{figure}
 
 
 

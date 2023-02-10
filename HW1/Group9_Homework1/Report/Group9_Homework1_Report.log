@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  9 FEB 2023 12:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  10 FEB 2023 23:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -825,29 +825,39 @@ Underfull \hbox (badness 1142) in paragraph at lines 412--412
 []\OT1/cmr/m/n/7 (d) |Pro-cessed seg-mented im-
  []
 
+<fig8b.png, id=150, 1339.0025pt x 677.53125pt>
+File: fig8b.png Graphic file (type png)
+<use fig8b.png>
+Package pdftex.def Info: fig8b.png  used on input line 435.
+(pdftex.def)             Requested size: 142.26378pt x 71.98544pt.
+<fig8a.png, id=151, 1341.01pt x 747.79375pt>
+File: fig8a.png Graphic file (type png)
+<use fig8a.png>
+Package pdftex.def Info: fig8a.png  used on input line 441.
+(pdftex.def)             Requested size: 142.26378pt x 79.32509pt.
 \tf@thm=\write4
 \openout4 = `Group9_Homework1_Report.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 439.
-[5 <./fig7a.jpg> <./fig7b.jpg> <./fig7c.jpg> <./fig7d.jpg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 439.
-
-(./Group9_Homework1_Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 439.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 439.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 460.
+[5 <./fig7a.jpg> <./fig7b.jpg> <./fig7c.jpg> <./fig7d.jpg> <./fig8b.png> <./fig
+8a.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 460.
+ (./Group9_Homework1_Report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 460.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 460.
 Package rerunfilecheck Info: File `Group9_Homework1_Report.out' has not changed
 .
 (rerunfilecheck)             Checksum: 612B33731F7DC0571A97F1F7B7A09F6C;678.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 439.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 460.
  ) 
 Here is how much of TeX's memory you used:
- 11802 strings out of 481239
- 176536 string characters out of 5920376
+ 11820 strings out of 481239
+ 176740 string characters out of 5920376
  641261 words of memory out of 5000000
- 26798 multiletter control sequences out of 15000+600000
+ 26813 multiletter control sequences out of 15000+600000
  540808 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,11n,42p,767b,663s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,42p,811b,663s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -859,10 +869,10 @@ blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i12.pfb>
-Output written on Group9_Homework1_Report.pdf (6 pages, 2877835 bytes).
+Output written on Group9_Homework1_Report.pdf (6 pages, 3017395 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 188 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 205 PDF objects out of 1000 (max. 8388607)
+ 144 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 198 words of extra memory for PDF output out of 10000 (max. 10000000)
 
