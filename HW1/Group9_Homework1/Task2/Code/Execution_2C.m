@@ -23,14 +23,21 @@ for i=1:10
     imagePath = ['sample_images\frame',No,'.jpg'];
     ownImagePath = ['own_test_images\',No,'.jpg'];
     img = imread(imagePath);
+
+    % ----preprocess images to improve contrast----
     % resize test images to same as the size of images in dataset
-    img = imresize(img,[720,960]);
-    % preprocess images to improve contrast
-%     img_processed = preprocess(img); 
-    c_labels = semanticseg(img, net);
-    % postprocess image to remove noise
-%     postprocess_label=postprocess(c_labels); 
+    inputSize = net.Layers(1).InputSize;
+    img = imresize(img,inputSize(1:2));
+    % Contrast
+    img = localcontrast(img);
+    % Filter
+    sigma = 0.15;
+    alpha = 1.5;
+    numLevels = 20;
+    img = locallapfilt(img, sigma, alpha, 'NumIntensityLevels', numLevels);
+    
     % Fuse the categorical labels with the original image.
+    c_labels = semanticseg(img, net);
     cmap = camvidColorMap;
     output_image = labeloverlay(img,c_labels,'Colormap',cmap,'Transparency',0.4);
     savePath_2C = ['C:\Users\LENOVO\Desktop\ME5413\HW1\Group9_Homework1\Task2\Results\result_2C\','processed_image_',No,'.jpg'];
