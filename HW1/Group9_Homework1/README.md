@@ -51,19 +51,21 @@ Task 1 folder includes the followings:
 
 ### Installation Process
 ```
-cd ~/catkin_ws/
+cd ./Bonus_Task/catkin_ws/
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 ```
 
 ### Execution for python file (subscriber: receive point cloud data from rosbag)
 ```
-cd ~/catkin_ws/src/perception_lidar_clustering/scripts/
+cd ./Bonus_Task/catkin_ws/src/perception_lidar_clustering/scripts/
 chmod +x lidar_clustering.py
 ```
 
 ### Visualize the initial lidar data
 ```
+cd ./Bonus_Task/catkin_ws/
+source devel/setup.bash
 roslaunch perception_lidar_clustering RosbagPlay_InitialData.launch
 ```
 
@@ -84,21 +86,29 @@ roscore
 
 ** Terminal 2 **
 ```
+cd ./Bonus_Task/catkin_ws/
+source devel/setup.bash
 rosrun perception_lidar_clustering lidar_clustering.py
 ```
 
 ** Terminal 3 **
 ```
+cd ./Bonus_Task/catkin_ws/
+source devel/setup.bash
 roslaunch perception_lidar_clustering RosbagRecord_ClusteredData.launch
 ```
 
 ### Visualize the clustering results
-** Terminal 1 (The clustered results realtime) **
+** Terminal 1 (The clustered results realtime, play the bag in loop) **
 ```
+cd ./Bonus_Task/catkin_ws/
+source devel/setup.bash
 roslaunch perception_lidar_clustering RosbagPlay_ClusteredData.launch
 ```
 
 ** Terminal 2 (Play the offline-processed clustering results) **
 ```
+cd ./Bonus_Task/catkin_ws/
+source devel/setup.bash
 roslaunch perception_lidar_clustering RosbagPlay_ClusteredDataOffline.launch
 ```
