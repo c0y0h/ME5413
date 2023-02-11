@@ -87,8 +87,8 @@
 	%    break,case,catch,continue,elseif,else,end,for,function,global,%
 	%    if,otherwise,persistent,return,switch,try,while,...},%
 }
-
- \setlength{\parskip}{0.5em}
+\usepackage{enumitem}
+ \setlength{\parskip}{0.4em}
 
                                    %% Line Spread
 %MS%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Format %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -340,7 +340,7 @@ It can be seen that the performance of image segmentation is not completely accu
 
 The failure points can be concluded as follows:
 
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,topsep=0pt,parsep=0pt]
 	\item[1.] When the colour of the object is close to the background, it may not be recognized by network. (Blue circle in Fig.~\ref{fig6a})
 	\item[2.] When two objects are too close, there is a chance that the background between objects will be segmented into object class. (Purple circle in Fig.~\ref{fig6b})
 	\item[3.] Inaccurate segmentation when objects overlap together. (Red circle in Fig.~\ref{fig6c})
@@ -384,31 +384,39 @@ The failure points can be concluded as follows:
 \hspace{1.0em}
 Since the segmentation results of the neural network are not perfect, can we improve the segmentation method in the pre-processing and post-processing stages? We first realized that this is different from the traditional image segmentation problem. Methods such as filtering noise points, increasing image contrast, etc. are not effective.
 
-Here is the method of segmentation using the Deeplabv3 pre-trained neural network model. If you take a picture from his CamVid dataset for segmentation, the result must be accurate. Therefore, we realized that in the pre-processing stage, we can resize the picture to the size of the picture in the CamVid dataset (720x960) which can more fit the parameters of the training model. Then we implemented it again on the 10 sample image. The results are good as noise points decreasing (Fig.~\ref{fig7}). We can see the noise parts in red circle is disappeared after this process.
+Notice that we use the method of segmentation using the Deeplabv3 pre-trained neural network model. The principle is to update and converge the weights of the neural network in the learning of the dataset, so that the segmentation can be performed in new input images. 
+
+\begin{itemize}[itemsep=2pt,topsep=0pt,parsep=0pt]
+	\item[1.] Therefore, we realized that in the pre-processing stage, we firstly should resize the picture to the size of the network’s input image (the picture in the CamVid dataset) (720x960). 
+	\item[2.] Secondly, considering that the images taken by ourselves may not be clear enough under different equipment and environment, we decide to preprocess the images to be input by properly increasing the image contrast. Notice that we use the edge-aware local contrast manipulation of images in MATLAB (localcontrast function). The reason is: although the method Traditional linear contrast boosting and histogram equalization are the most widely used global image enhancement methods and simple, it does not take local information into account.
+	\item[3.] In addition, we noticed that some images have too many surface details of some objects, which interferes with the accuracy of segmentation. Here we appropriately use the method of fast local Laplacian filtering of images in MATLAB (locallapfilt function) to smooth image details Without affecting edge sharpness.
+\end{itemize}
+
+Then we implemented it again on the 10 sample image. The results are good as noise points decreasing (Fig.~\ref{fig7}. We can see the noise problem is better and segmentation is improved a little bit after this process.
 
 \begin{figure}[H]
 	\centering
 	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.5cm]{fig7a.jpg}
+		\includegraphics[width=3.5cm]{fig7a.png}
 		\subcaption{Original segmented image1}
 		\label{fig7a}
 	\end{minipage}
 	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.5cm]{fig7b.jpg}
+		\includegraphics[width=3.5cm]{fig7b.png}
 		\subcaption{Processed segmented image1}
 		\label{fig7b}
 	\end{minipage}
 	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.5cm]{fig7c.jpg}
+		\includegraphics[width=3.5cm]{fig7c.png}
 		\subcaption{Original segmented image2}
 		\label{fig7c}
 	\end{minipage}
 	\begin{minipage}[t]{0.24\textwidth}
 		\centering
-		\includegraphics[width=3.5cm]{fig7d.jpg}
+		\includegraphics[width=3.5cm]{fig7d.png}
 		\subcaption{Processed segmented image2}
 		\label{fig7d}
 	\end{minipage}

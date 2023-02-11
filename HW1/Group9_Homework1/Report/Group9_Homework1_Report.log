@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  10 FEB 2023 23:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  11 FEB 2023 13:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -557,10 +557,19 @@ Package color Info: Driver file: pdftex.def on input line 147.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip106
+\enit@outerparindent=\dimen198
+\enit@toks=\toks45
+\enit@inbox=\box51
+\enit@count@id=\count326
+\enitdp@description=\count327
+)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count326
-\l__pdf_internal_box=\box51
+\l__kernel_color_stack_int=\count328
+\l__pdf_internal_box=\box52
 )
 (./Group9_Homework1_Report.aux)
 \openout1 = `Group9_Homework1_Report.aux'.
@@ -584,17 +593,17 @@ LaTeX Font Info:    ... okay on input line 105.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count327
-\scratchdimen=\dimen198
-\scratchbox=\box52
-\nofMPsegments=\count328
-\nofMParguments=\count329
-\everyMPshowfont=\toks45
-\MPscratchCnt=\count330
-\MPscratchDim=\dimen199
-\MPnumerator=\count331
-\makeMPintoPDFobject=\count332
-\everyMPtoPDFconversion=\toks46
+\scratchcounter=\count329
+\scratchdimen=\dimen199
+\scratchbox=\box53
+\nofMPsegments=\count330
+\nofMParguments=\count331
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count332
+\MPscratchDim=\dimen256
+\MPnumerator=\count333
+\makeMPintoPDFobject=\count334
+\everyMPtoPDFconversion=\toks47
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -604,7 +613,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box53
+\AtBeginShipoutBox=\box54
 Package hyperref Info: Link coloring ON on input line 105.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -616,7 +625,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count333
+\c@section@level=\count335
 )
 LaTeX Info: Redefining \ref on input line 105.
 LaTeX Info: Redefining \pageref on input line 105.
@@ -664,7 +673,7 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count334
+\c@lstlisting=\count336
 <logo.png, id=40, 301.125pt x 137.51375pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
@@ -795,66 +804,66 @@ Package pdftex.def Info: fig6d.jpg  used on input line 373.
 (pdftex.def)             Requested size: 99.58464pt x 56.77393pt.
  [4 <./211.png (PNG copy)> <./2.1_2.png (PNG copy)> <./fig6a.jpg> <./fig6b.jpg>
  <./fig6c.jpg> <./fig6d.jpg>]
-<fig7a.jpg, id=145, 1606.0pt x 903.375pt>
-File: fig7a.jpg Graphic file (type jpg)
-<use fig7a.jpg>
-Package pdftex.def Info: fig7a.jpg  used on input line 393.
-(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
-<fig7b.jpg, id=146, 1606.0pt x 903.375pt>
-File: fig7b.jpg Graphic file (type jpg)
-<use fig7b.jpg>
-Package pdftex.def Info: fig7b.jpg  used on input line 399.
-(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
+<fig7a.png, id=145, 568.1225pt x 322.20375pt>
+File: fig7a.png Graphic file (type png)
+<use fig7a.png>
+Package pdftex.def Info: fig7a.png  used on input line 401.
+(pdftex.def)             Requested size: 99.58464pt x 56.47499pt.
+<fig7b.png, id=146, 567.11874pt x 321.2pt>
+File: fig7b.png Graphic file (type png)
+<use fig7b.png>
+Package pdftex.def Info: fig7b.png  used on input line 407.
+(pdftex.def)             Requested size: 99.58464pt x 56.39708pt.
 
-Underfull \hbox (badness 1142) in paragraph at lines 400--400
+Underfull \hbox (badness 1142) in paragraph at lines 408--408
 []\OT1/cmr/m/n/7 (b) |Pro-cessed seg-mented im-
  []
 
-<fig7c.jpg, id=147, 1606.0pt x 903.375pt>
-File: fig7c.jpg Graphic file (type jpg)
-<use fig7c.jpg>
-Package pdftex.def Info: fig7c.jpg  used on input line 405.
-(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
-<fig7d.jpg, id=148, 1606.0pt x 903.375pt>
-File: fig7d.jpg Graphic file (type jpg)
-<use fig7d.jpg>
-Package pdftex.def Info: fig7d.jpg  used on input line 411.
-(pdftex.def)             Requested size: 99.58464pt x 56.0059pt.
+<fig7c.png, id=147, 568.1225pt x 321.2pt>
+File: fig7c.png Graphic file (type png)
+<use fig7c.png>
+Package pdftex.def Info: fig7c.png  used on input line 413.
+(pdftex.def)             Requested size: 99.58464pt x 56.29906pt.
+<fig7d.png, id=148, 568.1225pt x 320.19624pt>
+File: fig7d.png Graphic file (type png)
+<use fig7d.png>
+Package pdftex.def Info: fig7d.png  used on input line 419.
+(pdftex.def)             Requested size: 99.58464pt x 56.12312pt.
 
-Underfull \hbox (badness 1142) in paragraph at lines 412--412
+Underfull \hbox (badness 1142) in paragraph at lines 420--420
 []\OT1/cmr/m/n/7 (d) |Pro-cessed seg-mented im-
  []
 
 <fig8b.png, id=150, 1339.0025pt x 677.53125pt>
 File: fig8b.png Graphic file (type png)
 <use fig8b.png>
-Package pdftex.def Info: fig8b.png  used on input line 435.
+Package pdftex.def Info: fig8b.png  used on input line 443.
 (pdftex.def)             Requested size: 142.26378pt x 71.98544pt.
 <fig8a.png, id=151, 1341.01pt x 747.79375pt>
 File: fig8a.png Graphic file (type png)
 <use fig8a.png>
-Package pdftex.def Info: fig8a.png  used on input line 441.
+Package pdftex.def Info: fig8a.png  used on input line 449.
 (pdftex.def)             Requested size: 142.26378pt x 79.32509pt.
 \tf@thm=\write4
 \openout4 = `Group9_Homework1_Report.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 460.
-[5 <./fig7a.jpg> <./fig7b.jpg> <./fig7c.jpg> <./fig7d.jpg> <./fig8b.png> <./fig
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 468.
+[5 <./fig7a.png> <./fig7b.png> <./fig7c.png> <./fig7d.png> <./fig8b.png> <./fig
 8a.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 460.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 468.
  (./Group9_Homework1_Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 460.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 460.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 468.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 468.
 Package rerunfilecheck Info: File `Group9_Homework1_Report.out' has not changed
 .
 (rerunfilecheck)             Checksum: 612B33731F7DC0571A97F1F7B7A09F6C;678.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 460.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 468.
  ) 
 Here is how much of TeX's memory you used:
- 11820 strings out of 481239
- 176740 string characters out of 5920376
- 641261 words of memory out of 5000000
- 26813 multiletter control sequences out of 15000+600000
+ 12139 strings out of 481239
+ 182128 string characters out of 5920376
+ 642261 words of memory out of 5000000
+ 27128 multiletter control sequences out of 15000+600000
  540808 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,42p,811b,663s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -869,9 +878,9 @@ blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i12.pfb>
-Output written on Group9_Homework1_Report.pdf (6 pages, 3017395 bytes).
+Output written on Group9_Homework1_Report.pdf (6 pages, 3388850 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
+ 209 PDF objects out of 1000 (max. 8388607)
  144 compressed objects within 2 object streams
  34 named destinations out of 1000 (max. 500000)
  198 words of extra memory for PDF output out of 10000 (max. 10000000)
