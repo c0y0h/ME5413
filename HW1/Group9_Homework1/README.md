@@ -95,10 +95,10 @@ roslaunch perception_lidar_clustering RosbagRecord_ClusteredData.launch
 ### Visualize the clustering results
 ** Terminal 1 (The clustered results realtime) **
 ```
-roslaunch perception_lidar_clustering RosbagRecord_ClusteredData.launch
+roslaunch perception_lidar_clustering RosbagPlay_ClusteredData.launch
 ```
 
 ** Terminal 2 (Play the offline-processed clustering results) **
 ```
-roslaunch perception_lidar_clustering RosbagRecord_ClusteredDataOffline.launch
+roslaunch perception_lidar_clustering RosbagPlay_ClusteredDataOffline.launch
 ```
