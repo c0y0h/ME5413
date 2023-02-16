@@ -19,28 +19,29 @@ def icp_core(points1, points2):
     T[3, 3] = 1
 
     # Todo: step1: calculate centroid
-    p1 = np.transpose(points1)
-    p2 = np.transpose(points2)
-    centroid1 = np.mean(points1, axis=0)
-    centroid2 = np.mean(points2, axis=0)
+    centroid1 = np.mean(points1, axis=0)   # get mean x,y,z value of points1
+    centroid2 = np.mean(points2, axis=0)   # get mean x,y,z value of points2
 
     # Todo: step2: de-centroid of points1 and points2
-    p1i = (points1 - centroid1).T
-    p2i = (points2 - centroid2).T
+    p1i = (points1 - centroid1).T          # subtract centroids by points1
+    p2i = (points2 - centroid2).T          # subtract centroids by points2
 
     # Todo: step3: compute H, which is sum of p1i'*p2i'^T
-    H = np.matmul(p1i, p2i.T)
+    H = np.matmul(p1i, p2i.T)              # H = p1i'*p2i'^T
 
     # Todo: step4: SVD of H (can use 3rd-part lib), solve R and t
-    U,sigma,VT = la.svd(H)
+    U,sigma,VT = la.svd(H)                 # U * sigma * V^T = H
 
     # Todo: step5, combine R and t into transformation matrix T
-    R = np.matmul(VT.T,U.T)
-    t = centroid2 - np.matmul(R,centroid1)
+    R = np.matmul(VT.T,U.T)                # R = V * U^T
+    t = centroid2 - np.matmul(R,centroid1) # t = centroid2 - R*centroid1
     print('------------Rotation matrix------------')
     print(R)
     print('------------translation matrix------------')
     print(t)
+    # combine R and t into T
+    # T = [ R t ]
+    #     [ 0 1 ]
     T[0:3,0:3] = R
     T[0:3,3] = t.reshape(1,3)
     return T
@@ -58,6 +59,9 @@ def svd_based_icp_matched(points1, points2):
     N = np.size(points1,0)
     pcd1_transformed = np.zeros(shape=(N, 3))
     for i in range(0,N):
+        # turn every point array from [x,y,z] to [x,y,z,1]
+        # multiply every point array with T 
+        # and get x_transformed, y_transformed, z_transformed in first three value
         pcd1_transformed[i] = np.matmul(T, np.r_[points1[i], [1]])[0:3]
 
     # visualization
