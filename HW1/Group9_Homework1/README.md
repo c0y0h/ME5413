@@ -7,7 +7,7 @@ Group member: Chen Yihui, Wang Renjie
 ## Task 1: Lidar Clustering
 Perform lidar clustering of a set of 10 lidar scene samples using DBSCAN and other methods.
 
-！[image](https://github.com/c0y0h/ME5413/blob/main/HW1/Group9_Homework1/Report/fig1a.png)
+![image](https://github.com/c0y0h/ME5413/blob/main/HW1/Group9_Homework1/Report/fig1a.png)
 
 Reference: https://scikit-learn.org/stable/modules/clustering.html
 
