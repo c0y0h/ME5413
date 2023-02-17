@@ -7,6 +7,8 @@ Group member: Chen Yihui, Wang Renjie
 ## Task 1: Lidar Clustering
 Perform lidar clustering of a set of 10 lidar scene samples using DBSCAN and other methods.
 
+！[image](https://github.com/c0y0h/ME5413/blob/main/HW1/Group9_Homework1/Report/fig1a.png)
+
 Reference: https://scikit-learn.org/stable/modules/clustering.html
 
 Task 1 folder includes the followings:
@@ -34,6 +36,8 @@ Task 1 folder includes the followings:
     i.  Code:       MATLAB files 
     ii. Results:    Image files 
 
+![image](https://github.com/c0y0h/ME5413/blob/main/HW1/Group9_Homework1/Report/2.1_2.png)
+
 ### Execution process
 1. Download retrained model and put it in the Code file
 
@@ -48,6 +52,8 @@ Task 1 folder includes the followings:
 ## Bonus Task: Implementation in ROS
 1. Perform Lidar Clustering in ROS by subscribing to the topic - /me5413/lidar_top 
 2. Save the clustering results as a rosbag.
+
+![image](https://github.com/c0y0h/ME5413/blob/main/HW1/Group9_Homework1/Report/fig8b.png)
 
 ### Installation Process
 ```
