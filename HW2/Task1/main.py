@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+
+# If run in vscode, change the path to site-packages in anaconda env
+import sys
+sys.path.append('/home/cyh/anaconda3/lib/python3.8/site-packages')
+
 import numpy as np
 import open3d as o3d
 import datetime
@@ -99,7 +104,13 @@ def svd_based_icp_unmatched(points1, points2, n_iter, threshold):
     for i in range(n_iter):
 
         # Todo: for all point in points_1, find nearest point in points_2, and generate points_2_nearest
-        points_2_nearest = points_1.copy() # comment this line, this only indicates the size of points_2_nearest should be the same as points_1
+        # points_2_nearest = points_1.copy() # comment this line, this only indicates the size of points_2_nearest should be the same as points_1
+        N = np.size(points_1, 0)
+        points_2_nearest = np.zeros(shape=(N, 3))           # initialize 
+        for j in range(N):                                  # traverse points1
+            dif = points_1[j] - points_2                      # difference between one point in points1 and all points in points2
+            dis = np.linalg.norm(dif, axis=1)               # compute the distance array
+            points_2_nearest[j] = points_2[np.argmin(dis)]   # find points1[j]'s nearest point in points2, and put it in points_2_nearest
 
 
         # solve icp
@@ -107,6 +118,7 @@ def svd_based_icp_unmatched(points1, points2, n_iter, threshold):
 
         # Todo: update accumulated T
         # T_accumulated = ?
+        T_accumulated = np.dot(T, T_accumulated)            # update
 
 
         print('-----------------------------------------')
@@ -117,6 +129,9 @@ def svd_based_icp_unmatched(points1, points2, n_iter, threshold):
         print(T_accumulated)
 
         # Todo: update points_1
+        points_1_homogeneous = np.append(points_1, np.ones(shape=(N, 1)), axis=1)   # homogeneous coordinate (N, 4)
+        points_1_homogeneous = (np.dot(T, points_1_homogeneous.T)).T        # [(4, 4) * (4, N)]' = (N, 4)
+        points_1 = points_1_homogeneous[:, 0:3]         # (N, 3)
 
 
         mean_distance = mean_dist(points_1, points2)
@@ -157,9 +172,9 @@ def main():
     points2 = np.array(pcd2.points)
 
     # task 1:
-    svd_based_icp_matched(points1, points2)
+    # svd_based_icp_matched(points1, points2)
     # task 2:
-    # svd_based_icp_unmatched(points1, points2, n_iter=30, threshold=0.1)
+    svd_based_icp_unmatched(points1, points2, n_iter=30, threshold=0.1)
 
 if __name__ == '__main__':
     main()
