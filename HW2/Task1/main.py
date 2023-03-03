@@ -19,6 +19,7 @@ def icp_core(points1, points2):
     """
     assert points1.shape == points2.shape, 'point could size not match'
 
+    # Initialize transformation matrix T
     T = np.zeros(shape=(4, 4))
     T[0:3, 0:3] = np.eye(3)
     T[3, 3] = 1

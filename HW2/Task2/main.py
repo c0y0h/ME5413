@@ -108,10 +108,12 @@ def svd_based_icp_unmatched(points1, points2, n_iter, threshold):
         N = np.size(points_1, 0)
         points_2_nearest = np.zeros(shape=(N, 3))           # initialize 
         for j in range(N):                                  # traverse points1
-            dif = points_1[j] - points_2                      # difference between one point in points1 and all points in points2
-            dis = np.linalg.norm(dif, axis=1)               # compute the distance array
-            points_2_nearest[j] = points_2[np.argmin(dis)]   # find points1[j]'s nearest point in points2, and put it in points_2_nearest
-
+            # Difference between one point in points1 and all points in points2
+            dif = points_1[j] - points_2                      
+            # Compute the distance array
+            dis = np.linalg.norm(dif, axis=1)              
+            # Find points1[j]'s nearest point in points2, and put it in points_2_nearest
+            points_2_nearest[j] = points_2[np.argmin(dis)]   
 
         # solve icp
         T = icp_core(points_1, points_2_nearest)
@@ -119,7 +121,6 @@ def svd_based_icp_unmatched(points1, points2, n_iter, threshold):
         # Todo: update accumulated T
         # T_accumulated = ?
         T_accumulated = np.dot(T, T_accumulated)            # update
-
 
         print('-----------------------------------------')
         print('iteration = ' + str(i+1))
