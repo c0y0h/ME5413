@@ -51,6 +51,7 @@
 \usepackage[a4paper]{geometry}                           %% Paper size
 \geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm} %% Margin
 \linespread{1.2}      
+\usepackage{cite}
 
 % matlab code package
 \usepackage{appendix}
@@ -87,8 +88,9 @@
 	%    break,case,catch,continue,elseif,else,end,for,function,global,%
 	%    if,otherwise,persistent,return,switch,try,while,...},%
 }
-%\usepackage{enumitem}
+\usepackage{enumitem}
 % \setlength{\parskip}{0.4em}
+
 
                                    %% Line Spread
 %MS%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Format %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -301,7 +303,7 @@ We can see the mean error is reduced after each iteration (3.212 to 1.874 to 1.1
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10cm]{2.3.png}
+	\includegraphics[width=6cm]{2.3.png}
 	\caption{Code for ICP algorithm with unmatched point cloud}
 	\label{fig4}
 \end{figure}
@@ -313,59 +315,153 @@ We can see the mean error is reduced after each iteration (3.212 to 1.874 to 1.1
 
 \section{Task 3: Running SLAM Algorithms}
 
-\subsection{Cartographer with 2D LiDAR}
+\subsection{Cartographer for 2D LiDAR SLAM}
 
 \hspace{1.0em}
+Cartographer is an open-source, real-time, simultaneous localization and mapping (SLAM) system developed by Google. It is designed to create high-resolution maps of indoor and outdoor environments using data collected from a variety of sensors, including LiDAR, IMU, and cameras. Here we apply the algorithm to do 2D mapping using the collected data in the given rosbag ('\textless 2dlidar.bag \textgreater'). 
 
+After compiling the Cartographer on ROS Noetic, we need to configure the .lua and .lauch file to run the algorithm on our own rosbag. First we check the topics in the given rosbag and use "rqt\_graph" and "rqt\_tf\_tree" to plot the node diagram and tf structure. Then we need to change some important parameters:
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=10cm]{task3a_result.png}
-	\caption{Code for ICP algorithm with unmatched point cloud}
-	\label{fig5}
-\end{figure}
+\begin{itemize}[itemsep=3pt,topsep=0pt,parsep=0pt]
+	\item We set $published\_frame$ to "odom" and set the flag $use\_odometry$ "true".
+	\item Since we only have one lidar, we set $num\_laser\_scans=1, \ num\_multi\_echo\_laser\_scans = 0$.
+	\item We also need to set $TRAJECTORY\_BUILDER\_2D.use\_imu\_data = false$ since we haven't applied imu.
+\end{itemize}
+
+As for the .launch file, we start recording a new rosbag before the algorithm starts for evaluating the performance afterwards. We include our .lua configuration and start rviz for visualization. The whole .lua and launch file is included in the appendix. The mapping process visualized by rviz is shown in Fig.~\ref{fig5}, where we can see the loop closure can adjust the map to achieve better results.
 
 
 \begin{figure}[H]
 	\centering
 	\begin{minipage}[t]{0.32\textwidth}
 		\centering
-		\includegraphics[width=5cm]{3a_evo1.png}
-		\subcaption{Results at iteration 7}
+		\includegraphics[width=5cm]{task3a_result1.png}
+		\subcaption{Before reaching the start point}
+		\label{fig5a}
+	\end{minipage}
+	\begin{minipage}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=5cm]{task3a_result2.png}
+		\subcaption{After reaching the start point}
+		\label{fig5b}
+	\end{minipage}
+	\begin{minipage}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=5cm]{task3a_result3.png}
+		\subcaption{Final mapping result}
+		\label{fig5c}
+	\end{minipage}
+	\caption{2D LiDAR SLAM by Cartographer algorithm}
+	\label{fig5}
+\end{figure} 
+
+We can see the map rotation is obvious since we have no IMU, we should give a lower rotation weight for ceres\_scan\_matcher. We also set minimum and maximum lidar range to be 0.3 and 100 respectively, and voxel filter size is set to be 0.02. Moreover, we find the loop closure is not stable, so we increase the min\_score of constraint\_builder to 0.7. The mapping results after tuning is shown in Fig.~\ref{fig6a}, where the performance looks slightly better than the former case. By the EVO tool, we plot the evaluation results in Fig.~\ref{fig6b}. We can see the maximum drift (2.737) appears after the robot reaches the start point, and the Absolute RMSE is 0.864 (Fig.~\ref{fig6c}), which is relatively good. 
+
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=5cm]{task3a_result4.png}
+		\subcaption{Mapping results after tuning}
 		\label{fig6a}
 	\end{minipage}
 	\begin{minipage}[t]{0.32\textwidth}
 		\centering
 		\includegraphics[width=5cm]{3a_evo2.png}
-		\subcaption{Results at iteration 15}
+		\subcaption{Performance evaluation by EVO}
 		\label{fig6b}
 	\end{minipage}
 	\begin{minipage}[t]{0.32\textwidth}
 		\centering
 		\includegraphics[width=5cm]{3a_evo3.png}
-		\subcaption{Results at iteration 23}
+		\subcaption{Different metrics for evaluation}
 		\label{fig6c}
 	\end{minipage}
-	\caption{Implementation of ICP algorithm for unmatched point cloud}
-	\label{fig3}
+	\caption{Performance evaluation by EVO}
+	\label{fig6}
 \end{figure} 
 
-In your report: 
+One of the main disadvantages of Cartographer algorithm is that it requires a lot of computational resources, which can limit its use on low-power devices. Therefore, we may modify more parameters to achieve a lower latency. In addition, it can be challenging to configure and fine-tune so many hyper-parameters in Cartographer, and the "best" combination should be selected according to specific applications.
 
-•  Briefly describe the SLAM1 algorithm you choose to use 
+\subsection{A-LOAM for 3D LiDAR SLAM}
 
-•  Describe the detailed process of running the SLAM algorithms, give a screenshot of your 
-algorithm running in rviz 
+\hspace{1.0em}
+In this task, we use the A-LOAM (3D LiDAR) algorithm to complete a 3D SLAM task on the given rosbag "3dlidar.bag". Here we refer this repo[1] to help do the task and directly generate odometry file for EVO evaluation.
 
-•  Highlight your modification/tuning done on the algorithms to achieve better results 
+The process of algorithm implementation can be concluded as:
 
-•  Show the Absolute RMSE, as well as the plots generated by the EVO tool 
+\begin{itemize}[itemsep=3pt,topsep=0pt,parsep=0pt]
+	\item[1.] Confirm system requirements: Ubuntu 20.04, ROS Noetic, C++14, CMake: 3.0.2 and above. 
+	\item[2.] Install libraries required: Eigen3, PCL1.10, Ceres, evo.
+	\item[3.] Develop the Aloam from repo into catkin\_ws (some modifications are needed which can be found in the ‘README.md’).
+	\item[4.] Create a folder named ‘txt’, then copy the ground truth file ‘00.txt’ into folder and create a empty txt file ‘aloam.txt’ in folder.
+	\item[5.] Launch the Aloam and then play the rosbag "3dlidar.bag" at the same time. The ‘aloam.txt’ in the txt file will store the Aloam lidar odometry result after finishing the Aloam algorithm.
+	\item[6.] In ‘txt’ folder, evaluate the performance of the algorithm using EVO command "evo\_ape kitti 00.txt aloam.txt -r full -va --plot --plot\_mode xz".
+\end{itemize}
 
-•  Discuss the drawbacks/failures in your tests, provide some analysis and propose possible 
-solutions (illustrate with figures and provide your hypostasis)
+Then, the result of the EVO evaluation of this 3D SLAM task is shown in Fig.~\ref{fig7}. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{task3.1.b_result.png}
+	\caption{3D SLAM task result}
+	\label{fig7}
+\end{figure}
+
+Notice that in step 3, there are some modifications we did which the README.md do not mention. 
+
+\begin{itemize}[itemsep=3pt,topsep=0pt,parsep=0pt]
+	\item Firstly, it is needed to uncomment the “//generate the KITTI format trajectory result” part in the laserMapping.cpp, so that the Aloam lidar odometry result will be stored in ‘aloam.txt’. 
+	\item Secondly, the ‘ceres::LocalParameterization’ and ‘ceres::EigenQuaternionParameterization’ are deprecated in the latest release of Ceres Solver (v 2.1.0) and need to be replaced to ‘ceres::Manifold’ and ‘ceres::QuaternionManifold()‘.
+\end{itemize}
+
+From the result, it can be seen that the max error value is 8.066, the mean error value is 3.278 and the min error value is 2.478. Thus, the performance of this algorithm is not bad.
 
 
 
+
+
+\newpage
+
+\bibliographystyle{IEEEtran}
+%	
+\bibliography{ref}{}
+
+\citetext{1}{nuslde (2023) aloam\_lidar\_odom\_result\_generate}  \href{https://github.com/nuslde/aloam\_lidar\_odom\_result\_generate}{[Source Code]}
+
+\begin{appendices}
+	
+	\section{Appendix}
+	
+	\textbf{\textcolor[rgb]{0.98,0.00,0.00}{my\_robot.lua}}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=18cm]{appendix2.png}
+		\caption{my\_robot.lua}
+	\end{figure} 
+
+	
+	\textbf{\textcolor[rgb]{0.98,0.00,0.00}{demo\_my\_robot.launch}}
+	
+	\begin{figure}[H]
+		\centering
+			\includegraphics[width=18cm]{appendix1.png}
+		\caption{demo\_my\_robot.launch}
+	\end{figure} 
+	
+
+	
+\end{appendices}
+
+
+
+%\begin{appendices}
+%	\section{xxx}
+%	
+%	\section{xxx}
+%	
+%\end{appendices}
 
 
 
