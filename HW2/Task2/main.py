@@ -175,7 +175,7 @@ def main():
     # task 1:
     # svd_based_icp_matched(points1, points2)
     # task 2:
-    svd_based_icp_unmatched(points1, points2, n_iter=30, threshold=0.1)
+    svd_based_icp_unmatched(points1, points2, n_iter=50, threshold=0.1)
 
 if __name__ == '__main__':
     main()
