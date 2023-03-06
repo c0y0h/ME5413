@@ -50,7 +50,7 @@
 \graphicspath{{figure/}}                                 %% Path of Figures
 \usepackage[a4paper]{geometry}                           %% Paper size
 \geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm} %% Margin
-\linespread{1.2}      
+\linespread{1.1}      
 \usepackage{cite}
 
 % matlab code package
@@ -299,16 +299,25 @@ The $threshold$ is set to be 0.1 and core code for the iterative ICP algorithm i
 	\label{fig3}
 \end{figure} 
 
-We can see the mean error is reduced after each iteration (3.212 to 1.874 to 1.151), and it declines more and more slowly as iteration number increases. The final result at 30th iteration is shown in Fig.~\ref{fig4}, where the mean error is about 0.797 and still higher than the mannually set threshold. We increase the maximum iteration number to 50 and the result is shown in Fig.~\ref{fig4b}. The mean error is only ? now and the accumulated transformation matrix $T\_accumulated$ is very close to that we derived in Task1. However, the cost time is rather high (650s) because of the time-consuming corresponding points search procedure. In practice, kd-tree can be used to search for the nearest points more efficiently. Moreover, some learning-based methods have been popular for solving the point cloud registration problem. 
+We can see the mean error is reduced after each iteration (3.212 to 1.874 to 1.151), and it declines more and more slowly as iteration number increases. The final result at 30th iteration is shown in Fig.~\ref{fig4}, where the mean error is about 0.797 and still higher than the mannually set threshold. We increase the maximum iteration number to 50 and the result is shown in Fig.~\ref{fig4b}. The mean error is only 0.389 now and the accumulated transformation matrix $T\_accumulated$ is very close to that we derived in Task1. However, the cost time is rather high (1045s) because of the time-consuming corresponding points search procedure. In practice, kd-tree can be used to search for the nearest points more efficiently. Moreover, some learning-based methods have been popular for solving the point cloud registration problem. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=6cm]{2.3.png}
-	\caption{Code for ICP algorithm with unmatched point cloud}
+	\begin{minipage}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=6cm]{2.3.png}
+		\subcaption{Results at iteration 30}
+		\label{fig4a}
+	\end{minipage}
+	\begin{minipage}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=6cm]{2.4_iter50.png}
+		\subcaption{Results at iteration 50}
+		\label{fig4b}
+	\end{minipage}
+	\caption{Implementation of ICP algorithm for unmatched point cloud}
 	\label{fig4}
-\end{figure}
-
-
+\end{figure} 
 
 
 
@@ -318,17 +327,17 @@ We can see the mean error is reduced after each iteration (3.212 to 1.874 to 1.1
 \subsection{Cartographer for 2D LiDAR SLAM}
 
 \hspace{1.0em}
-Cartographer is an open-source, real-time, simultaneous localization and mapping (SLAM) system developed by Google. It is designed to create high-resolution maps of indoor and outdoor environments using data collected from a variety of sensors, including LiDAR, IMU, and cameras. Here we apply the algorithm to do 2D mapping using the collected data in the given rosbag ('\textless 2dlidar.bag \textgreater'). 
+Cartographer is an open-source, real-time, simultaneous localization and mapping (SLAM) system developed by Google. It is designed to create high-resolution maps of indoor and outdoor environments using data collected from a variety of sensors, including LiDAR, IMU, and cameras. Here we apply the algorithm to do 2D mapping using the collected data in the given rosbag (\textit{'\textless 2dlidar.bag \textgreater'}). 
 
-After compiling the Cartographer on ROS Noetic, we need to configure the .lua and .lauch file to run the algorithm on our own rosbag. First we check the topics in the given rosbag and use "rqt\_graph" and "rqt\_tf\_tree" to plot the node diagram and tf structure. Then we need to change some important parameters:
+After compiling the Cartographer on ROS Noetic, we need to configure the \textit{.lua} and \textit{.lauch} file to run the algorithm on our own rosbag. First we check the topics in the given rosbag and use \textit{"rqt\_graph"} and \textit{"rqt\_tf\_tree"} to plot the node diagram and tf structure. Then we need to change some important parameters:
 
 \begin{itemize}[itemsep=3pt,topsep=0pt,parsep=0pt]
-	\item We set $published\_frame$ to "odom" and set the flag $use\_odometry$ "true".
-	\item Since we only have one lidar, we set $num\_laser\_scans=1, \ num\_multi\_echo\_laser\_scans = 0$.
-	\item We also need to set $TRAJECTORY\_BUILDER\_2D.use\_imu\_data = false$ since we haven't applied imu.
+	\item We set \textit{published\_frame} to \textit{"odom"} and set the flag \textit{use\_odometry} as \textit{"true"}.
+	\item Since we only have one lidar, we set \textit{num\_laser\_scans = 1}, \textit{\ num\_multi\_echo\_laser\_scans = 0}.
+	\item We also need to set \textit{TRAJECTORY\_BUILDER\_2D.use\_imu\_data = false} since we haven't applied IMU.
 \end{itemize}
 
-As for the .launch file, we start recording a new rosbag before the algorithm starts for evaluating the performance afterwards. We include our .lua configuration and start rviz for visualization. The whole .lua and launch file is included in the appendix. The mapping process visualized by rviz is shown in Fig.~\ref{fig5}, where we can see the loop closure can adjust the map to achieve better results.
+As for the .launch file, we start recording a new rosbag before the algorithm starts for evaluating the performance afterwards. We include our \textit{.lua} configuration and start rviz for visualization. The whole \textit{.lua} and \textit{.launch} file is included in the appendix. The mapping process visualized by rviz is shown in Fig.~\ref{fig5}, where we can see the loop closure can adjust the map to achieve better results.
 
 
 \begin{figure}[H]
@@ -355,7 +364,7 @@ As for the .launch file, we start recording a new rosbag before the algorithm st
 	\label{fig5}
 \end{figure} 
 
-We can see the map rotation is obvious since we have no IMU, we should give a lower rotation weight for ceres\_scan\_matcher. We also set minimum and maximum lidar range to be 0.3 and 100 respectively, and voxel filter size is set to be 0.02. Moreover, we find the loop closure is not stable, so we increase the min\_score of constraint\_builder to 0.7. The mapping results after tuning is shown in Fig.~\ref{fig6a}, where the performance looks slightly better than the former case. By the EVO tool, we plot the evaluation results in Fig.~\ref{fig6b}. We can see the maximum drift (2.737) appears after the robot reaches the start point, and the Absolute RMSE is 0.864 (Fig.~\ref{fig6c}), which is relatively good. 
+We can see the map rotation is obvious since we have no IMU, we should give a lower rotation weight for \textit{ceres\_scan\_matcher}. We also set minimum and maximum lidar range to be 0.3 and 100 respectively, and voxel filter size is set to be 0.02. Moreover, we find the loop closure is not stable, so we increase the \textit{min\_score} of \textit{constraint\_builder} to 0.7. The mapping results after tuning is shown in Fig.~\ref{fig6a}, where the performance looks slightly better than the former case. By the EVO tool, we plot the evaluation results in Fig.~\ref{fig6b}. We can see the maximum drift (2.737) appears after the robot reaches the start point, and the Absolute RMSE is 0.864 (Fig.~\ref{fig6c}), which is relatively good. 
 
 
 \begin{figure}[H]
@@ -387,36 +396,62 @@ One of the main disadvantages of Cartographer algorithm is that it requires a lo
 \subsection{A-LOAM for 3D LiDAR SLAM}
 
 \hspace{1.0em}
-In this task, we use the A-LOAM (3D LiDAR) algorithm to complete a 3D SLAM task on the given rosbag "3dlidar.bag". Here we refer this repo[1] to help do the task and directly generate odometry file for EVO evaluation.
+A-LOAM (Advanced Lidar Odometry And Mapping) is an improved framework from LOAM, using Eigen and Ceres Solvers to simplify code structure. A-LOAM use two parallel algorithms: a low-precision high-speed odometer and a low-speed high-precision odometer, combining the two odometers to obtain real-time map updates. The feature matching method adopted improves the accuracy and operation efficiency of the algorithm.
 
-The process of algorithm implementation can be concluded as:
+In this task, we refer this repo$^{[1]}$ to help do the task and directly generate odometry file for EVO evaluation. The process of algorithm implementation is: 1) Develop the Aloam from repo$^{[1]}$ with modifications needed. 2) Create a folder named \textit{‘txt’} with \textit{‘00.txt’} and empty \textit{‘aloam.txt’}. 3) Launch the Aloam and then meanwhile play \textit{‘\textless 3dlidar.bag \textgreater’}. 4) Evaluate the performance of the algorithm with EVO.
+
+Notice that in step 1, there are some modifications we did which the README.md do not mention. 
 
 \begin{itemize}[itemsep=3pt,topsep=0pt,parsep=0pt]
-	\item[1.] Confirm system requirements: Ubuntu 20.04, ROS Noetic, C++14, CMake: 3.0.2 and above. 
-	\item[2.] Install libraries required: Eigen3, PCL1.10, Ceres, evo.
-	\item[3.] Develop the Aloam from repo into catkin\_ws (some modifications are needed which can be found in the ‘README.md’).
-	\item[4.] Create a folder named ‘txt’, then copy the ground truth file ‘00.txt’ into folder and create a empty txt file ‘aloam.txt’ in folder.
-	\item[5.] Launch the Aloam and then play the rosbag "3dlidar.bag" at the same time. The ‘aloam.txt’ in the txt file will store the Aloam lidar odometry result after finishing the Aloam algorithm.
-	\item[6.] In ‘txt’ folder, evaluate the performance of the algorithm using EVO command "evo\_ape kitti 00.txt aloam.txt -r full -va --plot --plot\_mode xz".
+	\item Firstly, uncomment the \textit{“//generate the KITTI format trajectory result”} part in the \textit{laserMapping.cpp}, so that the Aloam lidar odometry result will be stored in \textit{‘aloam.txt’}. 
+	\item Secondly, the \textit{‘ceres::LocalParameterization’} and \textit{‘ceres::EigenQuaternionParameterization’} are deprecated in the latest release of Ceres Solver (v 2.1.0) and need to be replaced to \textit{‘ceres::Manifold’} and \textit{‘ceres::QuaternionManifold()‘}.
 \end{itemize}
 
-Then, the result of the EVO evaluation of this 3D SLAM task is shown in Fig.~\ref{fig7}. 
+The result of the EVO evaluation of this 3D SLAM task and the screenshot of algorithm running in rviz is shown in Fig.~\ref{fig7}. From the result, it can be seen that the max error value is 8.066, the mean error value is 3.278 and the min error value is 2.478. Thus, the performance of this algorithm is not bad.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm]{task3.1.b_result.png}
-	\caption{3D SLAM task result}
+	\begin{minipage}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=5cm]{3.1b_rviz_middle.png}
+		\subcaption{During mapping process}
+	\end{minipage}
+	\begin{minipage}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=5cm]{3.1b_rviz_final.png}
+		\subcaption{Final results}
+	\end{minipage}
+	\begin{minipage}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=5cm]{3.1b_result.png}
+		\subcaption{Performance evaluation by EVO}
+	\end{minipage}
+	\caption{3D SLAM algorithm running in rviz and performance}
 	\label{fig7}
-\end{figure}
+\end{figure} 
 
-Notice that in step 3, there are some modifications we did which the README.md do not mention. 
+To further improve the performance, we tried tuning some parameters (‘DISTANCE\_SQ\_THRESHOLD’ from 25 to 15 and ‘SCAN\_PERIOD’ from 0.1 to 0.05) in \textit{LaserOdometry.cpp} and successfully reduced the maximum error from 8.066 to 7.748 as shown in Fig.~\ref{fig8}.
 
-\begin{itemize}[itemsep=3pt,topsep=0pt,parsep=0pt]
-	\item Firstly, it is needed to uncomment the “//generate the KITTI format trajectory result” part in the laserMapping.cpp, so that the Aloam lidar odometry result will be stored in ‘aloam.txt’. 
-	\item Secondly, the ‘ceres::LocalParameterization’ and ‘ceres::EigenQuaternionParameterization’ are deprecated in the latest release of Ceres Solver (v 2.1.0) and need to be replaced to ‘ceres::Manifold’ and ‘ceres::QuaternionManifold()‘.
-\end{itemize}
 
-From the result, it can be seen that the max error value is 8.066, the mean error value is 3.278 and the min error value is 2.478. Thus, the performance of this algorithm is not bad.
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=5cm]{3.1b_rviz_parameterset.png}
+	\end{minipage}
+	\begin{minipage}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=5cm]{3.1b_rviz_aftertuning.png}
+	\end{minipage}
+	\caption{3D SLAM task result after tuning}
+	\label{fig8}
+\end{figure} 
+
+The disadvantage of A-LOAM is that it does not do back-end closed-loop detection, so perhaps we can seek to correct motion estimation drift through closed-loop detection. Alternatively, the output can be added to a filter, such as a Kalman filter, to further reduce motion estimation drift.
+
+
+\subsection{Bonus task}
+\hspace{1.0em}
 
 
 
