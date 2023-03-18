@@ -389,7 +389,7 @@ where $p$ is relevant to the map scale and often set as an extremely small numbe
 \begin{figure}[H]
 	\begin{minipage}{.4\linewidth}
 		\centering
-		\includegraphics[width=6cm]{start_to_others_diagonal.png}
+		\includegraphics[width=5cm]{start_to_others_diagonal.png}
 	\end{minipage}
 	\begin{minipage}{.6\linewidth}
 		\centering
@@ -411,9 +411,54 @@ where $p$ is relevant to the map scale and often set as an extremely small numbe
 \section{Task 3: The “Travelling Shopper” Problem}
 \hspace{1.0em}
 
-ssss
+Given Tab.~\ref{tab1}, we are required to compute the optimal route to visit all stores and come back to the start location, which is also known as "Travelling Shopper Problem". The simplest way is to enumerate all possible routes and compare their total distance. The time complexity is $O(n!)$ and it can solve the problem quickly in our case since there are only 5 key locations. However, it will become extremely slow when more locations are added.
+
+Another common method is model it as a dynamic programming problem. We define $d(i, V')$ as the lowest cost when the shopper reaches node $i$ and have been to all the nodes in set $V'$. We mark the start point as '0', so the initial condition becomes:
 
 
+\begin{equation}
+\begin{aligned}
+d(0,\{0\}) = 0
+\label{eq4}
+\end{aligned}
+\end{equation}
+
+When we decide to arrive location 'i' with the lowest cost, we need to compute according to the distance matrix in Tab.~\ref{tab1} and the current state. Then we derive the transition equation:
+
+\begin{equation}
+\begin{aligned}
+d(i, V'+\{i\}) = \min_{k \in V'}\{d(k, V') + c_{ki}\}
+\label{eq5}
+\end{aligned}
+\end{equation}
+
+After constructing the dynamic programming array, the total distance after coming back to the start point '0' can be obtained by:
+
+\begin{equation}
+\begin{aligned}
+d\_total = \min_{i \in S} \{d(i, S) + c_{i0}\}
+\label{eq6}
+\end{aligned}
+\end{equation}
+
+where $S$ is the set including all locations (i.e. the shopper man has been to all locations). In our implementation, the set $V'$ has $2^{5}$ possible values and that for $i$ (the current location) is 5, so we construct the dynamic programming array in a shape of $[2^{5}, 5]$. One technique is to use a binary data to represent the set $V'$, which can facilitate the programming (for example, '11011' represent the set \{0,1,3,4\}). After filling the array according the initial condition in Eq.~\ref{eq4} and transition rule in Eq.~\ref{eq5}, we can directly get the total length by Eq.~\ref{eq6} and also easily obtain the route by retrieving the path from end to start.
+
+We compare the violent enumeration and dynamic programming method by the total length, the whole route and time cost. As is shown in Fig.~\ref{fig5}, the total length computed and optimal route obtained are both the same (the route order is just inversed). Surprisingly, in this case the violent enumeration method cost less time than dynamic programming method, since there are only 5 locations here. Actually, the time complexity for the DP method is $O(2^{n}n^{2})$, so when $n$ becomes larger, the DP method can work much more efficiently than the simple enumeration method. We plot the obtained optimal route in Fig.~\ref{fig6}. 
+
+ 
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{compare.png}
+	\caption{Comparison between the two methods}
+	\label{fig5}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5cm]{optimal_route.png}
+	\caption{The optimal route obtained by DP method}
+	\label{fig6}
+\end{figure}
 
 \newpage
 
